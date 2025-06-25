@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>マインスイーパー</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f8ff; }
+    h1 { text-align: center; }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(9, 32px);
+      grid-gap: 2px;
+      justify-content: center;
+      margin: 20px auto;
+      width: max-content;
+    }
+    .cell {
+      width: 32px; height: 32px;
+      background: #b2ebf2;
+      border: 1px solid #81d4fa;
+      text-align: center;
+      line-height: 32px;
+      font-size: 1.1em;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .cell.open { background: #fff; cursor: default; }
+    .cell.mine { background: #ff8a80; }
+    .cell.flag { background: #ffd54f; }
+    #status { text-align: center; margin: 10px; font-size: 1.2em; }
+    #reset { display: block; margin: 0 auto 10px auto; }
+  </style>
+</head>
+<body>
+  <h1>マインスイーパー</h1>
+  <button id="reset">リセット</button>
+  <div id="status"></div>
+  <div id="board"></div>
+  <script>
+    const ROWS = 9, COLS = 9, MINES = 10;
+    let board = [], revealed = [], flagged = [], gameOver = false, cellsOpened = 0;
+
+    function init() {
+      board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+      revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+      flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+      gameOver = false;
+      cellsOpened = 0;
+      // 地雷設置
+      let mines = 0;
+      while (mines < MINES) {
+        let r = Math.floor(Math.random() * ROWS);
+        let c = Math.floor(Math.random() * COLS);
+        if (board[r][c] === 'M') continue;
+        board[r][c] = 'M';
+        mines++;
+      }
+      // 数字セット
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          if (board[r][c] === 'M') continue;
+          let count = 0;
+          for (let dr = -1; dr <= 1; dr++) {
+            for (let dc = -1; dc <= 1; dc++) {
+              let nr = r + dr, nc = c + dc;
+              if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && board[nr][nc] === 'M') count++;
+            }
+          }
+          board[r][c] = count;
+        }
+      }
+      draw();
+      document.getElementById('status').textContent = '';
+    }
+
+    function draw() {
+      const boardDiv = document.getElementById('board');
+      boardDiv.innerHTML = '';
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          if (revealed[r][c]) {
+            cell.classList.add('open');
+            if (board[r][c] === 'M') {
+              cell.classList.add('mine');
+              cell.textContent = '💣';
+            } else if (board[r][c] > 0) {
+              cell.textContent = board[r][c];
+              cell.style.color = ['#2196f3','#388e3c','#f44336','#7b1fa2','#ff9800','#0097a7','#cddc39','#795548'][board[r][c]-1];
+            }
+          } else if (flagged[r][c]) {
+            cell.classList.add('flag');
+            cell.textContent = '🚩';
+          }
+          cell.oncontextmenu = e => { e.preventDefault(); flagCell(r, c); };
+          cell.onclick = () => openCell(r, c);
+          boardDiv.appendChild(cell);
+        }
+      }
+    }
+
+    function openCell(r, c) {
+      if (gameOver || revealed[r][c] || flagged[r][c]) return;
+      revealed[r][c] = true;
+      cellsOpened++;
+      if (board[r][c] === 'M') {
+        gameOver = true;
+        revealAll();
+        document.getElementById('status').textContent = 'ゲームオーバー！';
+        return;
+      }
+      if (board[r][c] === 0) {
+        // 0なら周囲も開く
+        for (let dr = -1; dr <= 1; dr++) {
+          for (let dc = -1; dc <= 1; dc++) {
+            let nr = r + dr, nc = c + dc;
+            if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS) {
+              if (!revealed[nr][nc]) openCell(nr, nc);
+            }
+          }
+        }
+      }
+      if (cellsOpened === ROWS * COLS - MINES) {
+        gameOver = true;
+        revealAll();
+        document.getElementById('status').textContent = 'クリア！おめでとう！';
+      }
+      draw();
+    }
+
+    function flagCell(r, c) {
+      if (gameOver || revealed[r][c]) return;
+      flagged[r][c] = !flagged[r][c];
+      draw();
+    }
+
+    function revealAll() {
+      for (let r = 0; r < ROWS; r++)
+        for (let c = 0; c < COLS; c++)
+          revealed[r][c] = true;
+      draw();
+    }
+
+    document.getElementById('reset').onclick = init;
+    window.onload = init;
+  </script>
+</body>
+</html>
