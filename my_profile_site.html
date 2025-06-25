@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>自己紹介サイト</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body { font-family: 'Segoe UI', 'Hiragino Sans', sans-serif; background: #f0f8ff; margin: 0; }
+    .section {
+      display: none;
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #b2ebf2;
+      padding: 36px 28px 32px 28px;
+      position: relative;
+      animation: fadeIn 0.7s;
+    }
+    .section.active { display: block; }
+    h1, h2 { color: #26c6da; }
+    .nav-btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+    }
+    .nav-btn {
+      background: #26c6da;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 28px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #b2ebf2;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: #00bcd4; }
+    .profile-img {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      border: 4px solid #b2ebf2;
+      background: #fff;
+      box-shadow: 0 2px 12px #ffe0f0;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+    ul.skill-list { font-size:1.1em; color:#444; line-height:2; padding-left: 1.2em;}
+    .hobby-img {
+      width: 180px; border-radius:12px; margin-top:16px; box-shadow:0 2px 8px #b2ebf2;
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. トップ画面 -->
+  <div class="section active" id="section1">
+    <h1>Welcome!</h1>
+    <p style="font-size:1.2em; color:#444;">自己紹介サイトへようこそ</p>
+    <img src="https://www.fujitsu.com/global/imagesgig5/logo.svg" alt="Fujitsu Logo" style="width:120px; margin:32px 0 0 0;">
+    <div class="nav-btns">
+      <span></span>
+      <button class="nav-btn" onclick="showSection(2)">次へ</button>
+    </div>
+  </div>
+
+  <!-- 2. 基本情報 -->
+  <div class="section" id="section2">
+    <h2>基本情報</h2>
+    <img src="顔写真のURLをここに" alt="顔写真" class="profile-img">
+    <p><b>名前：</b>山田 太郎</p>
+    <p><b>出身地：</b>東京都</p>
+    <p><b>誕生日：</b>1990年4月1日</p>
+    <p>IT企業でフロントエンドエンジニアとして6年勤務。UI/UXデザインも担当。</p>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showSection(1)">前へ</button>
+      <button class="nav-btn" onclick="showSection(3)">次へ</button>
+    </div>
+  </div>
+
+  <!-- 3. プログラミングスキル -->
+  <div class="section" id="section3">
+    <h2>プログラミングスキル</h2>
+    <ul class="skill-list">
+      <li><b>HTML/CSS</b>（10年）</li>
+      <li><b>JavaScript</b>（8年）</li>
+      <li><b>TypeScript</b>（4年）</li>
+      <li><b>React</b>（3年）</li>
+      <li><b>Node.js</b>（2年）</li>
+      <li><b>UI/UXデザイン</b>（6年）</li>
+    </ul>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showSection(2)">前へ</button>
+      <button class="nav-btn" onclick="showSection(4)">次へ</button>
+    </div>
+  </div>
+
+  <!-- 4. 趣味１：生き物 -->
+  <div class="section" id="section4">
+    <h2 style="color:#ec407a;">趣味１：生き物</h2>
+    <p style="font-size:1.1em; color:#444;">動物園や水族館巡りが好きで、特にペンギンやカワウソなどの小動物に癒されています。休日は自然観察や写真撮影も楽しんでいます。</p>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="ペンギン" class="hobby-img">
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showSection(3)">前へ</button>
+      <button class="nav-btn" onclick="showSection(5)">次へ</button>
+    </div>
+  </div>
+
+  <!-- 5. 趣味２：創作活動 -->
+  <div class="section" id="section5">
+    <h2 style="color:#ab47bc;">趣味２：創作活動</h2>
+    <p style="font-size:1.1em; color:#444;">イラストやデジタルアートを描くのが趣味です。SNSで作品を発表したり、デザインイベントにも参加しています。</p>
+    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="アート作品" class="hobby-img">
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showSection(4)">前へ</button>
+      <button class="nav-btn" onclick="showSection(6)">次へ</button>
+    </div>
+  </div>
+
+  <!-- 6. その他 -->
+  <div class="section" id="section6">
+    <h2 style="color:#fbc02d;">その他</h2>
+    <p style="font-size:1.1em; color:#444;">最近はアクセシビリティやデザインシステムの研究に力を入れています。新しい技術やトレンドを積極的に学び、より良いサービスづくりを目指しています。</p>
+    <p style="font-size:1em; color:#888; margin-top:24px;">ご覧いただきありがとうございました！</p>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="showSection(5)">前へ</button>
+      <span></span>
+    </div>
+  </div>
+
+  <script>
+    function showSection(n) {
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById('section' + i).classList.remove('active');
+      }
+      document.getElementById('section' + n).classList.add('active');
+      window.scrollTo(0,0);
+    }
+  </script>
+</body>
+</html>
