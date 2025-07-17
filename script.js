@@ -14,15 +14,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // 戻るボタンのクリック処理
     backButton.addEventListener("click", function () {
       try {
-        // 親ウィンドウに戻る信号を送る
-        window.parent.postMessage({ action: "closeIframe" }, "*");
+        // 親ウィンドウの履歴を戻る
+        window.top.history.back();
       } catch (e) {
-        // postMessageが失敗した場合は、履歴を戻る
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          // 履歴がない場合は親ウィンドウを閉じる試行
+        try {
+          // 親ウィンドウにフォーカスを移す
           window.parent.focus();
+        } catch (e2) {
+          // 全て失敗した場合は現在のウィンドウの履歴を戻る
+          window.history.back();
         }
       }
     });
