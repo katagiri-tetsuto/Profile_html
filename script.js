@@ -8,11 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // 戻るボタンの表示制御
   const backButton = document.getElementById("backButton");
 
-  if (isInIframe()) {
-    backButton.style.display = "flex";
+  // 常にボタンを表示
+  backButton.style.display = "flex";
 
-    // 戻るボタンのクリック処理
-    backButton.addEventListener("click", function () {
+  // 戻るボタンのクリック処理
+  backButton.addEventListener("click", function () {
+    if (isInIframe()) {
       try {
         // 親ウィンドウの履歴を戻る
         window.top.history.back();
@@ -25,8 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
           window.history.back();
         }
       }
-    });
-  }
+    } else {
+      // iframeではない場合は通常の戻る処理
+      window.history.back();
+    }
+  });
 
   // ナビゲーションリンクのクリック処理
   const navLinks = document.querySelectorAll(".nav-menu a");
