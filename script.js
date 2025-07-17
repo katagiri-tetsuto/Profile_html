@@ -1,5 +1,33 @@
 // スムーズスクロール機能
 document.addEventListener("DOMContentLoaded", function () {
+  // iframeで表示されているかチェック
+  function isInIframe() {
+    return window.self !== window.top;
+  }
+
+  // 戻るボタンの表示制御
+  const backButton = document.getElementById("backButton");
+
+  if (isInIframe()) {
+    backButton.style.display = "flex";
+
+    // 戻るボタンのクリック処理
+    backButton.addEventListener("click", function () {
+      try {
+        // 親ウィンドウに戻る信号を送る
+        window.parent.postMessage({ action: "closeIframe" }, "*");
+      } catch (e) {
+        // postMessageが失敗した場合は、履歴を戻る
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          // 履歴がない場合は親ウィンドウを閉じる試行
+          window.parent.focus();
+        }
+      }
+    });
+  }
+
   // ナビゲーションリンクのクリック処理
   const navLinks = document.querySelectorAll(".nav-menu a");
 
