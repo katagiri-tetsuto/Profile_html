@@ -11,25 +11,29 @@ document.addEventListener("DOMContentLoaded", function () {
   // 常にボタンを表示
   backButton.style.display = "flex";
 
-  // 戻るボタンのクリック処理
-  backButton.addEventListener("click", function () {
-    if (isInIframe()) {
-      try {
-        // 親ウィンドウの履歴を戻る
-        window.top.history.back();
-      } catch (e) {
-        try {
-          // 親ウィンドウにフォーカスを移す
-          window.parent.focus();
-        } catch (e2) {
-          // 全て失敗した場合は現在のウィンドウの履歴を戻る
-          window.history.back();
-        }
-      }
-    } else {
-      // iframeではない場合は通常の戻る処理
-      window.history.back();
+  // 戻る先情報を保存
+  function saveReturnInfo() {
+    if (document.referrer) {
+      localStorage.setItem("returnUrl", document.referrer);
     }
+  }
+
+  // ページ読み込み時に戻る先を保存
+  document.addEventListener("DOMContentLoaded", function () {
+    saveReturnInfo();
+
+    // 戻るボタンのクリック処理
+    backButton.addEventListener("click", function () {
+      const savedReturnUrl = localStorage.getItem("returnUrl");
+
+      if (isInIframe() && savedReturnUrl) {
+        window.parent.location.href = savedReturnUrl;
+      } else if (savedReturnUrl) {
+        window.location.href = savedReturnUrl;
+      } else {
+        window.history.back();
+      }
+    });
   });
 
   // ナビゲーションリンクのクリック処理
