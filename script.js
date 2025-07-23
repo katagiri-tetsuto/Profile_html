@@ -25,18 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     try {
-      const savedReturnUrl = localStorage.getItem("returnUrl");
-
-      // 通常のウィンドウの場合
-      if (savedReturnUrl && savedReturnUrl !== window.location.href) {
-        window.location.href = savedReturnUrl;
-      } else if (window.history.length > 1) {
-        // ブラウザ履歴がある場合は戻る
-        window.history.back();
-      } else {
-        // 履歴がない場合はホームページや検索エンジンに移動
-        window.location.href = "https://www.google.com";
-      }
+      // 常に元のページに戻る
+      window.location.href =
+        "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
     } catch (error) {
       console.error("戻るボタンでエラーが発生しました:", error);
       // エラーが発生した場合の代替処理

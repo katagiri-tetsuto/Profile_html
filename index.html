@@ -9,6 +9,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <!-- iframeでの表示を防ぐセキュリティヘッダー -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-ancestors 'none';"
+    />
+    <script>
+      // iframe内で表示された場合の検出と対処
+      (function () {
+        try {
+          // 自分がトップレベルウィンドウかチェック
+          if (window.self !== window.top) {
+            // iframe内で表示されている場合、元のページにリダイレクト
+            window.top.location.href =
+              "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
+          }
+        } catch (e) {
+          // クロスオリジンの場合はトップレベルに移動
+          document.body.innerHTML =
+            '<div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;"><h1>ページが正しく表示されていません</h1><p>こちらをクリックして正しいページに移動してください：</p><a href="https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com" style="color: #9966cc; text-decoration: none; font-size: 18px;">元のページに戻る</a></div>';
+        }
+      })();
+    </script>
   </head>
   <body>
     <!-- 戻るボタン -->
