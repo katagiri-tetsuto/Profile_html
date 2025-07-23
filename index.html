@@ -12,23 +12,59 @@
     <!-- iframeでの表示を防ぐセキュリティヘッダー -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="frame-ancestors 'none';"
+      content="frame-ancestors 'none'; frame-src 'none';"
     />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
     <script>
-      // iframe内で表示された場合の検出と対処
+      // より強力なiframe検出と防止機能
       (function () {
-        try {
-          // 自分がトップレベルウィンドウかチェック
-          if (window.self !== window.top) {
-            // iframe内で表示されている場合、元のページにリダイレクト
-            window.top.location.href =
-              "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
+        // iframe内での表示を検出
+        function isInIframe() {
+          try {
+            return window.self !== window.top;
+          } catch (e) {
+            return true; // クロスオリジンの場合もiframe内と判定
           }
-        } catch (e) {
-          // クロスオリジンの場合はトップレベルに移動
-          document.body.innerHTML =
-            '<div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;"><h1>ページが正しく表示されていません</h1><p>こちらをクリックして正しいページに移動してください：</p><a href="https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com" style="color: #9966cc; text-decoration: none; font-size: 18px;">元のページに戻る</a></div>';
         }
+
+        // iframe内で表示されている場合の対処
+        if (isInIframe()) {
+          // ページの読み込みを停止
+          window.stop && window.stop();
+
+          // ページ内容を置き換え
+          document.addEventListener("DOMContentLoaded", function () {
+            document.body.innerHTML =
+              '<div style="text-align: center; padding: 50px; font-family: Arial, sans-serif; background: linear-gradient(135deg, #9966cc, #b19cd9); color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">' +
+              '<h1 style="margin-bottom: 30px;">このページは直接アクセスしてください</h1>' +
+              '<p style="margin-bottom: 20px; font-size: 18px;">セキュリティ上の理由により、iframe内での表示はできません。</p>' +
+              '<a href="https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com" target="_top" style="background: white; color: #9966cc; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 16px; margin: 10px; display: inline-block;">メインページに戻る</a>' +
+              "</div>";
+          });
+
+          // さらなるセキュリティ対策
+          try {
+            // 親ウィンドウのリダイレクトを試行（可能な場合）
+            if (window.top && window.top.location) {
+              window.top.location.replace(
+                "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com"
+              );
+            }
+          } catch (e) {
+            // クロスオリジンエラーは無視
+          }
+
+          // すべてのスクリプトの実行を停止
+          return;
+        }
+
+        // 通常のページ読み込み時の処理
+        document.addEventListener("DOMContentLoaded", function () {
+          // ページが正常に読み込まれた場合のみ実行
+          if (!isInIframe()) {
+            console.log("ページが正常に読み込まれました");
+          }
+        });
       })();
     </script>
   </head>
