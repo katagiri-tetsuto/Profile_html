@@ -33,41 +33,6 @@ body {
   padding: 0 20px;
 }
 
-/* Back Button (for iframe) */
-.back-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--gradient-1);
-  color: var(--white);
-  border: none;
-  padding: 12px 20px;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(153, 102, 204, 0.3);
-  transition: all 0.3s ease;
-  z-index: 1001;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.back-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(153, 102, 204, 0.4);
-  background: var(--gradient-3);
-}
-
-.back-button:active {
-  transform: translateY(0);
-}
-
-.back-button i {
-  font-size: 1rem;
-}
-
 /* Navigation */
 .navbar {
   background: var(--gradient-1);

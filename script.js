@@ -1,83 +1,5 @@
 // スムーズスクロール機能
 document.addEventListener("DOMContentLoaded", function () {
-  // iframe内での表示検出（ポップアップ用 - 親ウィンドウへの遷移は行わない）
-  try {
-    if (window.self !== window.top) {
-      console.log("iframe内での表示が検出されました");
-      // ここでは親ウィンドウの遷移は行わない（HTMLで処理済み）
-    }
-  } catch (e) {
-    console.log("iframe検出でエラーが発生:", e);
-  }
-
-  // 戻るボタンの表示制御
-  const backButton = document.getElementById("backButton");
-
-  // 常にボタンを表示
-  backButton.style.display = "flex";
-
-  // 戻る先情報を保存
-  function saveReturnInfo() {
-    try {
-      if (document.referrer && document.referrer !== window.location.href) {
-        localStorage.setItem("returnUrl", document.referrer);
-      }
-    } catch (error) {
-      console.log("localStorage access failed:", error);
-    }
-  }
-
-  // 戻る先情報を保存
-  saveReturnInfo();
-
-  // 戻るボタンのクリック処理
-  backButton.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    try {
-      // iframe内での表示かチェック
-      if (window.self !== window.top) {
-        // iframe内の場合は新しいタブでのみ開く（親ウィンドウの遷移は行わない）
-        try {
-          window.open(
-            "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com",
-            "_blank"
-          );
-          return;
-        } catch (error) {
-          console.error("新しいタブで開けませんでした:", error);
-          alert(
-            "戻ることができませんでした。新しいタブでメインページを開いてください。"
-          );
-          return;
-        }
-      }
-
-      // 通常のページ遷移（iframe外の場合）
-      const returnUrl = localStorage.getItem("returnUrl");
-      if (returnUrl && returnUrl.includes("nc.kcc.knowledgewing.com")) {
-        window.location.href = returnUrl;
-      } else {
-        window.location.href =
-          "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
-      }
-    } catch (error) {
-      console.error("戻るボタンでエラーが発生しました:", error);
-      // エラーが発生した場合の代替処理
-      try {
-        window.open(
-          "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com",
-          "_blank"
-        );
-      } catch (fallbackError) {
-        console.error("代替処理でもエラーが発生しました:", fallbackError);
-        alert(
-          "戻ることができませんでした。新しいタブでメインページを開いてください。"
-        );
-      }
-    }
-  });
-
   // ナビゲーションリンクのクリック処理
   const navLinks = document.querySelectorAll(".nav-menu a");
 
@@ -175,19 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ソーシャルリンクと作品リンクのクリック処理
-  const externalLinks = document.querySelectorAll(".social-link, .work-video");
-
-  externalLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      // 外部リンクの場合は新しいタブで開く
-      if (this.href && this.href.startsWith("http")) {
-        e.preventDefault();
-        window.open(this.href, "_blank");
-      }
-    });
-  });
-
   // 作品カードのホバー効果
   const workCards = document.querySelectorAll(".work-card");
 
@@ -240,12 +149,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-// ページ読み込み時のアニメーション
-window.addEventListener("load", function () {
-  document.body.style.opacity = "1";
-  document.body.style.transition = "opacity 0.5s ease";
-});
-
-// 初期状態でボディを非表示にする
-document.body.style.opacity = "0";
