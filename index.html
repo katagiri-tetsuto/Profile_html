@@ -16,7 +16,7 @@
     />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <script>
-      // より強力なiframe検出と防止機能
+      // iframe検出と防止機能
       (function () {
         // iframe内での表示を検出
         function isInIframe() {
@@ -29,21 +29,18 @@
 
         // iframe内で表示されている場合の対処
         if (isInIframe()) {
-          // ページの読み込みを停止
-          window.stop && window.stop();
+          console.log(
+            "iframe内での表示が検出されました - 親ウィンドウを遷移します"
+          );
 
-          // ページ内容を置き換え
-          document.addEventListener("DOMContentLoaded", function () {
-            document.body.innerHTML =
-              '<div style="text-align: center; padding: 50px; font-family: Arial, sans-serif; background: linear-gradient(135deg, #9966cc, #b19cd9); color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">' +
-              '<h1 style="margin-bottom: 30px;">このページは直接アクセスしてください</h1>' +
-              '<p style="margin-bottom: 20px; font-size: 18px;">セキュリティ上の理由により、iframe内での表示はできません。</p>' +
-              "<button onclick=\"window.open('https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com', '_blank')\" style=\"background: white; color: #9966cc; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 16px; margin: 10px; border: none; cursor: pointer;\">新しいタブでメインページを開く</button>" +
-              "</div>";
-          });
-
-          // 親ウィンドウの自動遷移は行わない（無限ループを防ぐため）
-          // ユーザーが明示的にボタンをクリックした場合のみ新しいタブで開く
+          // 親ウィンドウを直接メインページに遷移
+          try {
+            window.top.location.href =
+              "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
+          } catch (e) {
+            // クロスオリジンでアクセスできない場合は、何もしない
+            console.log("親ウィンドウにアクセスできません");
+          }
 
           // すべてのスクリプトの実行を停止
           return;
