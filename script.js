@@ -1,33 +1,5 @@
-// フレームバスティング（iframeでの表示を防ぐ）
-if (window.self !== window.top) {
-  try {
-    // 親ウィンドウで現在のページを開く
-    window.top.location.href = window.location.href;
-  } catch (error) {
-    // セキュリティエラーが発生した場合は新しいウィンドウで開く
-    window.open(window.location.href, "_blank");
-  }
-}
-
 // スムーズスクロール機能
 document.addEventListener("DOMContentLoaded", function () {
-  // iframeで表示されているかチェック
-  function isInIframe() {
-    return window.self !== window.top;
-  }
-
-  // iframeでの表示を防ぐ（フレームバスティング）
-  if (isInIframe()) {
-    try {
-      // 親ウィンドウで現在のページを開く
-      window.top.location.href = window.location.href;
-    } catch (error) {
-      // セキュリティエラーが発生した場合は新しいウィンドウで開く
-      window.open(window.location.href, "_blank");
-    }
-    return; // iframe内での処理を停止
-  }
-
   // 戻るボタンの表示制御
   const backButton = document.getElementById("backButton");
 
