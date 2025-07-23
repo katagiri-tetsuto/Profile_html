@@ -1,27 +1,10 @@
 // スムーズスクロール機能
 document.addEventListener("DOMContentLoaded", function () {
-  // iframe内での表示を検出して親ウィンドウを遷移
+  // iframe内での表示検出（ポップアップ用 - 親ウィンドウへの遷移は行わない）
   try {
     if (window.self !== window.top) {
-      console.log(
-        "iframe内での表示が検出されました - 親ウィンドウを遷移します"
-      );
-
-      // 親ウィンドウを直接メインページに遷移
-      try {
-        window.top.location.href =
-          "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
-      } catch (e) {
-        // クロスオリジンでアクセスできない場合は、新しいタブで開く
-        console.log("親ウィンドウにアクセスできません - 新しいタブで開きます");
-        window.open(
-          "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com",
-          "_blank"
-        );
-      }
-
-      // このページの処理を停止
-      return;
+      console.log("iframe内での表示が検出されました");
+      // ここでは親ウィンドウの遷移は行わない（HTMLで処理済み）
     }
   } catch (e) {
     console.log("iframe検出でエラーが発生:", e);

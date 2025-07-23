@@ -16,42 +16,49 @@
     />
     <meta http-equiv="X-Frame-Options" content="DENY" />
     <script>
-      // iframe検出と防止機能
+      // ポップアップ機能
       (function () {
         // iframe内での表示を検出
         function isInIframe() {
           try {
             return window.self !== window.top;
           } catch (e) {
-            return true; // クロスオリジンの場合もiframe内と判定
+            return true;
           }
         }
 
-        // iframe内で表示されている場合の対処
+        // iframe内で表示されている場合はポップアップで開く
         if (isInIframe()) {
           console.log(
-            "iframe内での表示が検出されました - 親ウィンドウを遷移します"
+            "iframe内での表示が検出されました - ポップアップで開きます"
           );
 
-          // 親ウィンドウを直接メインページに遷移
-          try {
-            window.top.location.href =
-              "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
-          } catch (e) {
-            // クロスオリジンでアクセスできない場合は、何もしない
-            console.log("親ウィンドウにアクセスできません");
+          // ポップアップウィンドウで自分自身を開く
+          const popupWindow = window.open(
+            window.location.href,
+            "profilePopup",
+            "width=1200,height=800,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no"
+          );
+
+          if (popupWindow) {
+            // ポップアップが開けた場合、現在のiframeは空白にする
+            document.write(
+              '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;background:#f0f0f0;"><div style="text-align:center;"><h2>プロフィールページが新しいウィンドウで開きました</h2><p>ポップアップブロッカーが有効な場合は、ブロックを解除してください。</p></div></div>'
+            );
+          } else {
+            // ポップアップがブロックされた場合のメッセージ
+            document.write(
+              '<div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Arial;background:#f0f0f0;"><div style="text-align:center;"><h2>ポップアップがブロックされました</h2><p>ブラウザの設定でポップアップを許可してください。</p><button onclick="window.open(location.href, \'_blank\')" style="margin-top:10px;padding:10px 20px;background:#9966cc;color:white;border:none;border-radius:5px;cursor:pointer;">新しいタブで開く</button></div></div>'
+            );
           }
 
-          // すべてのスクリプトの実行を停止
+          // 以降の処理を停止
           return;
         }
 
         // 通常のページ読み込み時の処理
         document.addEventListener("DOMContentLoaded", function () {
-          // ページが正常に読み込まれた場合のみ実行
-          if (!isInIframe()) {
-            console.log("ページが正常に読み込まれました");
-          }
+          console.log("ページが正常に読み込まれました");
         });
       })();
     </script>
