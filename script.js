@@ -18,23 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ページ読み込み時に戻る先を保存
-  document.addEventListener("DOMContentLoaded", function () {
-    saveReturnInfo();
+  // 戻る先情報を保存
+  saveReturnInfo();
 
-    // 戻るボタンのクリック処理
-    backButton.addEventListener("click", function () {
-      const savedReturnUrl = localStorage.getItem("returnUrl");
+  // 戻るボタンのクリック処理
+  backButton.addEventListener("click", function () {
+    const savedReturnUrl = localStorage.getItem("returnUrl");
 
-      if (isInIframe() && savedReturnUrl) {
-        window.parent.location.href = savedReturnUrl;
-      } else if (savedReturnUrl) {
-        window.location.href = savedReturnUrl;
-      } else {
-        // history.go()を使用して1つ前のページに戻る
-        history.go(-1);
-      }
-    });
+    if (isInIframe() && savedReturnUrl) {
+      window.parent.location.href = savedReturnUrl;
+    } else if (savedReturnUrl) {
+      window.location.href = savedReturnUrl;
+    } else {
+      // history.go()を使用して1つ前のページに戻る
+      history.go(-1);
+    }
   });
 
   // ナビゲーションリンクのクリック処理
