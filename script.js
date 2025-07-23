@@ -13,8 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 戻る先情報を保存
   function saveReturnInfo() {
-    if (document.referrer) {
-      localStorage.setItem("returnUrl", document.referrer);
+    try {
+      if (document.referrer && document.referrer !== window.location.href) {
+        localStorage.setItem("returnUrl", document.referrer);
+      }
+    } catch (error) {
+      console.log("localStorage access failed:", error);
     }
   }
 
@@ -22,16 +26,44 @@ document.addEventListener("DOMContentLoaded", function () {
   saveReturnInfo();
 
   // 戻るボタンのクリック処理
-  backButton.addEventListener("click", function () {
-    const savedReturnUrl = localStorage.getItem("returnUrl");
+  backButton.addEventListener("click", function (e) {
+    e.preventDefault();
 
-    if (isInIframe() && savedReturnUrl) {
-      window.parent.location.href = savedReturnUrl;
-    } else if (savedReturnUrl) {
-      window.location.href = savedReturnUrl;
-    } else {
-      // history.go()を使用して1つ前のページに戻る
-      history.go(-1);
+    try {
+      const savedReturnUrl = localStorage.getItem("returnUrl");
+
+      // iframeの場合の処理
+      if (isInIframe()) {
+        if (savedReturnUrl && savedReturnUrl !== window.location.href) {
+          window.parent.location.href = savedReturnUrl;
+        } else {
+          // 親ウィンドウの履歴で戻る
+          window.parent.history.back();
+        }
+        return;
+      }
+
+      // 通常のウィンドウの場合
+      if (savedReturnUrl && savedReturnUrl !== window.location.href) {
+        window.location.href = savedReturnUrl;
+      } else if (window.history.length > 1) {
+        // ブラウザ履歴がある場合は戻る
+        window.history.back();
+      } else {
+        // 履歴がない場合はホームページや検索エンジンに移動
+        window.location.href = "https://www.google.com";
+      }
+    } catch (error) {
+      console.error("戻るボタンでエラーが発生しました:", error);
+      // エラーが発生した場合の代替処理
+      try {
+        window.history.back();
+      } catch (fallbackError) {
+        console.error("代替処理でもエラーが発生しました:", fallbackError);
+        alert(
+          "戻ることができませんでした。ブラウザの戻るボタンをご利用ください。"
+        );
+      }
     }
   });
 
