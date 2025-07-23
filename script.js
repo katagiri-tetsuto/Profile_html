@@ -11,17 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
         '<div style="text-align: center; padding: 50px; font-family: Arial, sans-serif; background: linear-gradient(135deg, #9966cc, #b19cd9); color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">' +
         '<h1 style="margin-bottom: 30px;">このページは直接アクセスしてください</h1>' +
         '<p style="margin-bottom: 20px; font-size: 18px;">セキュリティ上の理由により、iframe内での表示はできません。</p>' +
-        '<a href="https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com" target="_top" style="background: white; color: #9966cc; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 16px; margin: 10px; display: inline-block;">メインページに戻る</a>' +
+        "<button onclick=\"window.open('https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com', '_blank')\" style=\"background: white; color: #9966cc; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 16px; margin: 10px; border: none; cursor: pointer;\">新しいタブでメインページを開く</button>" +
         "</div>";
 
-      // 親ウィンドウの遷移を試行
-      try {
-        window.top.location.replace(
-          "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com"
-        );
-      } catch (e) {
-        console.log("親ウィンドウへの遷移に失敗:", e);
-      }
+      // 親ウィンドウの遷移は行わない（無限ループを防ぐため）
+      // ただし、ユーザーが明示的にクリックした場合のみ新しいタブで開く
 
       return; // 以降の処理を停止
     }
@@ -56,22 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       // iframe内での表示かチェック
       if (window.self !== window.top) {
-        // iframe内の場合は親ウィンドウに移動を試行
+        // iframe内の場合は新しいタブでのみ開く（親ウィンドウの遷移は行わない）
         try {
-          window.top.location.href =
-            "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com";
-          return;
-        } catch (crossOriginError) {
-          // クロスオリジンエラーの場合は新しいタブで開く
           window.open(
             "https://nc.kcc.knowledgewing.com/kk/user/t.katagiri@jp.fujitsu.com",
             "_blank"
           );
           return;
+        } catch (error) {
+          console.error("新しいタブで開けませんでした:", error);
+          alert(
+            "戻ることができませんでした。新しいタブでメインページを開いてください。"
+          );
+          return;
         }
       }
 
-      // 通常のページ遷移
+      // 通常のページ遷移（iframe外の場合）
       const returnUrl = localStorage.getItem("returnUrl");
       if (returnUrl && returnUrl.includes("nc.kcc.knowledgewing.com")) {
         window.location.href = returnUrl;
