@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
       } else if (savedReturnUrl) {
         window.location.href = savedReturnUrl;
       } else {
-        window.history.back();
+        // history.go()を使用して1つ前のページに戻る
+        history.go(-1);
       }
     });
   });
