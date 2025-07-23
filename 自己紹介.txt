@@ -1,0 +1,99 @@
+***プログラム
+下記の***条件と***デザイン、***コンテンツをもとに、htmlとcssを使ってリッチな自己紹介webページを作成してください。
+
+***条件
+・デザインは白を基調にアメジスト色のアクセントとグラデーションをいれてください。
+・[]はセクションを表します。
+・htmlサイズは横幅1200px程度
+
+***デザイン
+色彩の特徴
+主色調: 紫からピンクへのグラデーション
+色の範囲: 濃い紫（#663399系）から淡いピンク（#F5E6FF系）まで
+白の基調: 画像の右側や中央部分に白っぽい領域が含まれている
+デザインの特徴
+流体的な形状: 煙のような、雲のような有機的な形状
+柔らかいグラデーション: 色の境界が滑らかで自然な遷移
+抽象的パターン: 具体的な形ではなく、抽象的な美しさを表現
+奥行き感: 複数の層が重なったような立体的な印象
+
+***コンテンツ
+
+[トップページ]
+
+[基本情報]
+顔写真
+氏名：片桐　徹人　Katagiri Tetsuto
+部署：クラウド＆ビジネスアプリケーション事業本部ServiceNow事業部配属_研修期間
+メール：t.katagiri@jp.fujitsu.com
+SNS（アイコン）
+LinkdIn:https://www.linkedin.com/in/徹人-片桐-9ab055322
+Github
+X:https://x.com/Azamiushi
+note:https://note.com/katagiri_tetsuto
+youtube:https://youtube.com/@azamiushi
+
+[About me]
+初めまして。片桐徹人です。
+エンジニアとしてはクラウド分野の学習をメインにしており、現在はServiceNowを主軸にしています。
+また、生き物と創作活動が全般好きで、その他料理、旅、読書、ゲーム、スポーツ（球技以外）など幅広く好きです。
+（ペットの写真）
+
+noteに色々と書いてます。見てね！
+URL：https://note.com/katagiri_tetsuto
+
+[Belief]
+モットー
+変化と学びを積み重ね、好きと面白いに従って行動する
+
+ロールモデル
+フリーレン
+理由は下記の記事を見てね！
+URL：
+
+[Works]
+Blenderを用いてThe Backroomsを再現しました。
+…動画
+
+その他最近の作成
+…動画
+
+[Career]
+広島大学（2021年4月 ～ 2025年3月）
+-情報科学科情報科学部 情報科学科
+-ビジュアル情報学研究室
+-体育会体操部 主将
+-en-courage CS
+
+
+ServiceNow（2023年3月 ～ 2025年1月）
+-アカデミックプログラム（人材育成プログラム）
+
+Salesforce（2024年11月 ～ 2025年5月）
+-Pathfinder 第六期生（人材育成プログラム）
+
+Fujitsu（2025年4月 ～）
+-内定者アンバサダー　WelcomeMeetUp担当
+-クラウド＆ビジネスアプリケーション事業本部 ServiceNow部門
+-導入研修F24サブリーダー、Role別研修CL02リーダー
+
+
+国立研究開発法人情報通信研究機構（2025年5月 ～）
+-SecHack365（サイバーセキュリティに関する研究・開発プログラム）
+
+
+[Skills]
+Languages
+C, C#, Java, Python, Rsut, JavaScript, Dart
+Frameworks
+Flutter, pygame, OpenCV, Scikit-learn
+Cloud Services
+ServiceNow, Salesforce, Google Cloud, Amazon web Service
+Others
+HTML, CSS, SQL
+
+
+[資格]
+Salesforce　認定アドミニストレーター
+Salesforce　認定AIアソシエイト
+CG-ARTS　CGエンジニア検定エキスパート
