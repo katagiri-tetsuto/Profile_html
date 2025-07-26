@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // ナビゲーションリンクのクリック処理
   const navLinks = document.querySelectorAll(".nav-menu a");
 
-  navLinks.forEach((link) => {
+  // 下矢印ボタンのクリック処理も含める
+  const scrollButtons = document.querySelectorAll(".nav-menu a, .arrow-btn");
+
+  scrollButtons.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
 
@@ -44,9 +47,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // スクロール時のナビゲーション背景変更
+  // スクロール時のナビゲーション背景変更とアクティブセクションの検出
   window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    // ナビゲーションバーの背景変更
     if (window.scrollY > 50) {
       navbar.style.background = "rgba(153, 102, 204, 0.95)";
       navbar.style.backdropFilter = "blur(10px)";
@@ -54,6 +61,30 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.style.background = "linear-gradient(135deg, #9966cc, #b19cd9)";
       navbar.style.backdropFilter = "none";
     }
+
+    // 現在のセクションをハイライト
+    let currentSection = "";
+    const navHeight = navbar.offsetHeight;
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - navHeight - 100;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
+      ) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    // ナビゲーションリンクのアクティブ状態を更新
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + currentSection) {
+        link.classList.add("active");
+      }
+    });
   });
 
   // スクロール時のアニメーション
@@ -147,5 +178,62 @@ document.addEventListener("DOMContentLoaded", function () {
         isMenuOpen = true;
       }
     });
+  }
+
+  // キーボードナビゲーション（矢印キー）
+  document.addEventListener("keydown", function (e) {
+    const sections = [
+      "home",
+      "profile",
+      "about",
+      "belief",
+      "works",
+      "career",
+      "skills",
+    ];
+    const currentSection = getCurrentSection();
+    const currentIndex = sections.indexOf(currentSection);
+
+    if (e.key === "ArrowDown" && currentIndex < sections.length - 1) {
+      e.preventDefault();
+      scrollToSection(sections[currentIndex + 1]);
+    } else if (e.key === "ArrowUp" && currentIndex > 0) {
+      e.preventDefault();
+      scrollToSection(sections[currentIndex - 1]);
+    }
+  });
+
+  // 現在のセクションを取得する関数
+  function getCurrentSection() {
+    const sections = document.querySelectorAll("section");
+    const navHeight = document.querySelector(".navbar").offsetHeight;
+
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const sectionTop = section.offsetTop - navHeight - 100;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
+      ) {
+        return section.getAttribute("id");
+      }
+    }
+    return "home";
+  }
+
+  // セクションにスクロールする関数
+  function scrollToSection(sectionId) {
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+      const navHeight = document.querySelector(".navbar").offsetHeight;
+      const targetPosition = targetElement.offsetTop - navHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
   }
 });

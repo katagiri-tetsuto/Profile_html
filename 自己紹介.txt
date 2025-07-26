@@ -19,24 +19,26 @@
 
 ***コンテンツ
 
-[トップページ]
+[Top]
 
-[基本情報]
-顔写真
+[Info]
+（顔写真）
 氏名：片桐　徹人　Katagiri Tetsuto
-部署：クラウド＆ビジネスアプリケーション事業本部ServiceNow事業部配属_研修期間
+部署：クラウド＆ビジネスアプリケーション事業本部ServiceNow事業部配属　研修期間
 メール：t.katagiri@jp.fujitsu.com
+DM：
+
 SNS（アイコン）
 LinkdIn:https://www.linkedin.com/in/徹人-片桐-9ab055322
-Github
+Github：https://github.com/katagiri-tetsuto
 X:https://x.com/Azamiushi
 note:https://note.com/katagiri_tetsuto
 youtube:https://youtube.com/@azamiushi
 
 [About me]
 初めまして。片桐徹人です。
-エンジニアとしてはクラウド分野の学習をメインにしており、現在はServiceNowを主軸にしています。
-また、生き物と創作活動が全般好きで、その他料理、旅、読書、ゲーム、スポーツ（球技以外）など幅広く好きです。
+エンジニアとしてクラウド分野の学習をメインにしており、現在はServiceNowを主軸にしています。
+また、生き物と創作活動が全般好きで、その他料理、旅、読書、ゲーム、釣り、スポーツ（球技以外）など幅広く好きです。
 （ペットの写真）
 
 noteに色々と書いてます。見てね！
@@ -45,6 +47,9 @@ URL：https://note.com/katagiri_tetsuto
 [Belief]
 モットー
 変化と学びを積み重ね、好きと面白いに従って行動する
+
+パーパス
+「Be Creative」
 
 ロールモデル
 フリーレン
@@ -85,12 +90,18 @@ Fujitsu（2025年4月 ～）
 [Skills]
 Languages
 C, C#, Java, Python, Rsut, JavaScript, Dart
+
 Frameworks
 Flutter, pygame, OpenCV, Scikit-learn
+
 Cloud Services
 ServiceNow, Salesforce, Google Cloud, Amazon web Service
+
 Others
 HTML, CSS, SQL
+
+3D
+blender
 
 
 [資格]
