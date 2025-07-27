@@ -102,34 +102,43 @@ body {
   width: 100%;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
-.hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+/* Three.js Container */
+#threejs-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+}
+
+/* Section Styles */
+section {
+  padding: 80px 0;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
   background: var(--gradient-3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--gray);
-  margin-bottom: 2rem;
-}
-
-.hero-description {
-  font-size: 1.1rem;
-  color: var(--gray);
-  margin-bottom: 3rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
+/* Buttons */
 .btn {
   padding: 12px 30px;
   text-decoration: none;
@@ -160,12 +169,6 @@ body {
   color: var(--white);
 }
 
-.hero-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .profile-placeholder {
   width: 300px;
   height: 300px;
@@ -177,38 +180,6 @@ body {
   color: var(--white);
   font-size: 6rem;
   box-shadow: 0 10px 30px rgba(153, 102, 204, 0.3);
-}
-
-/* Three.js Container */
-#threejs-container {
-  width: 80vw;
-  height: 80vh;
-  max-width: 800px;
-  max-height: 600px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(153, 102, 204, 0.4);
-  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-}
-
-/* Section Styles */
-section {
-  padding: 80px 0;
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  background: var(--gradient-3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Scroll Arrow */
@@ -227,17 +198,19 @@ section {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--gradient-1);
+  background: rgba(153, 102, 204, 0.8);
   color: var(--white);
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(153, 102, 204, 0.3);
   animation: bounce 2s infinite;
+  backdrop-filter: blur(10px);
 }
 
 .arrow-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(153, 102, 204, 0.4);
+  background: rgba(153, 102, 204, 1);
 }
 
 .arrow-btn.back-to-top {
@@ -387,6 +360,17 @@ section {
   margin-top: 1rem;
 }
 
+.pet-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.3);
+  border: 4px solid var(--white);
+  margin: 0 auto;
+  display: block;
+}
+
 /* Belief Section */
 .belief {
   background: var(--light-gray);
@@ -463,6 +447,19 @@ section {
   justify-content: center;
   color: var(--primary-color);
   font-size: 4rem;
+  overflow: hidden;
+}
+
+.work-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .work-content {
@@ -669,11 +666,8 @@ section {
   }
 
   #threejs-container {
-    width: 90vw;
-    height: 60vh;
-    max-width: none;
-    max-height: none;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
   }
 
   .profile-content {
@@ -713,6 +707,11 @@ section {
     width: 150px;
     height: 150px;
     font-size: 2rem;
+  }
+
+  .pet-photo {
+    width: 150px;
+    height: 150px;
   }
 
   .social-links {
@@ -755,7 +754,6 @@ html {
   }
 }
 
-.hero-content,
 .profile-content,
 .about-content,
 .belief-content,

@@ -31,14 +31,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-      <div class="hero-image">
-        <div id="threejs-container"></div>
-      </div>
-      <div class="scroll-arrow">
-        <a href="#profile" class="arrow-btn">
-          <i class="fas fa-chevron-down"></i>
-        </a>
-      </div>
+      <div id="threejs-container"></div>
     </section>
 
     <!-- Profile Section -->
@@ -48,7 +41,7 @@
         <div class="profile-content">
           <div class="profile-image">
             <img
-              src="../Photos/顔写真.HEIC"
+              src="../Photos/顔写真.png"
               alt="片桐徹人の顔写真"
               class="profile-photo"
             />
@@ -134,10 +127,11 @@
             </div>
           </div>
           <div class="about-image">
-            <div class="pet-placeholder">
-              <i class="fas fa-paw"></i>
-              <p>ペットの写真</p>
-            </div>
+            <img
+              src="../Photos/ペット.png"
+              alt="ペットの写真"
+              class="pet-photo"
+            />
           </div>
         </div>
       </div>
@@ -184,18 +178,72 @@
         <div class="works-grid">
           <div class="work-card">
             <div class="work-image">
-              <i class="fas fa-cube"></i>
+              <img
+                src="../Photos/星花.png"
+                alt="処女作 星花"
+                class="work-photo"
+              />
             </div>
             <div class="work-content">
-              <h3>The Backrooms再現</h3>
-              <p>Blenderを用いてThe Backroomsを再現しました。</p>
+              <h3>処女作：星花</h3>
+              <p>
+                創作活動の記念すべき処女作として制作した星花をテーマにした作品です。初めての本格的な創作活動の成果物。
+              </p>
+              <a
+                href="https://note.com/katagiri_tetsuto"
+                target="_top"
+                class="work-video"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                <span>詳細を見る</span>
+              </a>
+            </div>
+          </div>
+          <div class="work-card">
+            <div class="work-image">
+              <video controls class="work-video-player">
+                <source
+                  src="../Photos/Raycasted_Sarus.mkv"
+                  type="video/x-matroska"
+                />
+                お使いのブラウザは動画再生に対応していません。
+              </video>
+            </div>
+            <div class="work-content">
+              <h3>作品2：Raycasted Sarus</h3>
+              <p>
+                レイキャスティング技術を用いて制作したSarusをテーマにした作品。技術的なチャレンジと創造性を組み合わせた意欲作。
+              </p>
               <a
                 href="https://youtube.com/@azamiushi"
                 target="_top"
                 class="work-video"
               >
                 <i class="fas fa-play-circle"></i>
-                <span>動画を見る</span>
+                <span>YouTubeで見る</span>
+              </a>
+            </div>
+          </div>
+          <div class="work-card">
+            <div class="work-image">
+              <video controls class="work-video-player">
+                <source src="../Photos/TheBackrooms.mp4" type="video/mp4" />
+                お使いのブラウザは動画再生に対応していません。
+              </video>
+            </div>
+            <div class="work-content">
+              <h3>The Backrooms再現</h3>
+              <p>
+                Blenderを用いてThe
+                Backroomsを再現しました。不気味で無限に続く黄色い部屋空間を3Dで表現。
+              </p>
+              <a
+                href="https://youtube.com/@azamiushi"
+                target="_top"
+                class="work-video"
+              >
+                <i class="fas fa-play-circle"></i>
+                <span>YouTubeで見る</span>
               </a>
             </div>
           </div>
@@ -205,7 +253,9 @@
             </div>
             <div class="work-content">
               <h3>その他最近の作成</h3>
-              <p>様々な創作活動を行っています。</p>
+              <p>
+                様々な創作活動を行っています。動画制作、3Dモデリング、プログラミングなど多岐にわたる作品を公開中。
+              </p>
               <a
                 href="https://youtube.com/@azamiushi"
                 target="_top"

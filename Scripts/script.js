@@ -28,28 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ヒーローボタンのクリック処理
-  const heroButtons = document.querySelectorAll(".hero-buttons a");
-
-  heroButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        const navHeight = document.querySelector(".navbar").offsetHeight;
-        const targetPosition = targetElement.offsetTop - navHeight;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        });
-      }
-    });
-  });
-
   // スクロール時のナビゲーション背景変更とアクティブセクションの検出
   window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
@@ -246,17 +224,22 @@ function initThreeJS() {
   const container = document.getElementById("threejs-container");
   if (!container) return;
 
+  // コンテナのサイズを親要素（hero section）に合わせる
+  const heroSection = document.querySelector(".hero");
+  const containerWidth = heroSection.offsetWidth;
+  const containerHeight = heroSection.offsetHeight;
+
   // シーン、カメラ、レンダラーの作成
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
     75,
-    container.offsetWidth / container.offsetHeight,
+    containerWidth / containerHeight,
     0.1,
     1000
   );
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-  renderer.setSize(container.offsetWidth, container.offsetHeight);
+  renderer.setSize(containerWidth, containerHeight);
   renderer.setClearColor(0x000000, 0.1);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -282,7 +265,7 @@ function initThreeJS() {
   let model = null;
 
   loader.load(
-    "Backrooms_tem.glb",
+    "../3D_Objects/Backrooms_tem.glb",
     function (gltf) {
       model = gltf.scene;
 
@@ -339,18 +322,19 @@ function initThreeJS() {
   let targetRotationX = 0;
   let targetRotationY = 0;
 
-  // マウスムーブメントイベント
-  container.addEventListener("mousemove", function (event) {
-    const rect = container.getBoundingClientRect();
-    mouseX = ((event.clientX - rect.left) / container.offsetWidth) * 2 - 1;
-    mouseY = -((event.clientY - rect.top) / container.offsetHeight) * 2 + 1;
+  // マウスムーブメントイベント（ヒーローセクション全体で反応）
+  const heroSection = document.querySelector(".hero");
+  heroSection.addEventListener("mousemove", function (event) {
+    const rect = heroSection.getBoundingClientRect();
+    mouseX = ((event.clientX - rect.left) / heroSection.offsetWidth) * 2 - 1;
+    mouseY = -((event.clientY - rect.top) / heroSection.offsetHeight) * 2 + 1;
 
     targetRotationY = mouseX * 0.5;
     targetRotationX = mouseY * 0.3;
   });
 
   // マウスリーブイベント
-  container.addEventListener("mouseleave", function () {
+  heroSection.addEventListener("mouseleave", function () {
     targetRotationX = 0;
     targetRotationY = 0;
   });
@@ -379,8 +363,8 @@ function initThreeJS() {
 
   // ウィンドウリサイズ対応
   window.addEventListener("resize", function () {
-    const width = container.offsetWidth;
-    const height = container.offsetHeight;
+    const width = heroSection.offsetWidth;
+    const height = heroSection.offsetHeight;
 
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
