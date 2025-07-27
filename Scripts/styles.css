@@ -28,9 +28,10 @@ body {
 
 /* Container */
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 /* Navigation */
@@ -46,12 +47,13 @@ body {
 }
 
 .nav-container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
 .nav-logo {
@@ -96,8 +98,8 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--gradient-2);
-  padding: 100px 20px 50px;
-  max-width: 1200px;
+  padding: 100px 40px 50px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 }
@@ -281,6 +283,15 @@ section {
   width: 250px;
   height: 250px;
   font-size: 5rem;
+}
+
+.profile-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.3);
+  border: 4px solid var(--white);
 }
 
 .profile-info h3 {
@@ -645,6 +656,14 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .nav-container {
+    padding: 0 20px;
+  }
+
   .hero {
     padding: 120px 20px 50px;
   }
@@ -683,6 +702,11 @@ section {
     width: 200px;
     height: 200px;
     font-size: 4rem;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
   }
 
   .pet-placeholder {
