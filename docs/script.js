@@ -214,10 +214,18 @@ function initThreeJS() {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
   renderer.setSize(containerWidth, containerHeight);
-  renderer.setClearColor(0x000000, 0.1);
+  renderer.setClearColor(0x000033, 1.0); // 濃い青色に変更
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   container.appendChild(renderer.domElement);
+
+  console.log(
+    "Renderer initialized with size:",
+    containerWidth,
+    "x",
+    containerHeight
+  );
+  console.log("Canvas added to container");
 
   // ライティングの設定
   const ambientLight = new THREE.AmbientLight(0x9966cc, 0.6);
@@ -234,13 +242,32 @@ function initThreeJS() {
   pointLight.position.set(-10, 10, -10);
   scene.add(pointLight);
 
+  console.log("Three.js scene initialized with lighting");
+  console.log("Scene children count:", scene.children.length);
+
   // GLTFLoaderでBackrooms_tem.glbを読み込み
   const loader = new THREE.GLTFLoader();
   let model = null;
 
+  console.log(
+    "Attempting to load GLB file from: ../3D_Objects/Backrooms_tem.glb"
+  );
+
+  // 即座にフォールバックを作成してテスト
+  createFallbackGeometry();
+
+  // 一定時間後にフォールバックを実行（ファイルが見つからない場合の対策）
+  setTimeout(() => {
+    if (!model) {
+      console.log("Model not loaded after 2 seconds, creating fallback");
+      createFallbackGeometry();
+    }
+  }, 2000);
+
   loader.load(
     "../3D_Objects/Backrooms_tem.glb",
     function (gltf) {
+      console.log("GLB file loaded successfully:", gltf);
       model = gltf.scene;
 
       // モデルのスケールと位置を調整
@@ -256,15 +283,22 @@ function initThreeJS() {
       });
 
       scene.add(model);
-      console.log("Backrooms model loaded successfully");
+      console.log("Backrooms model added to scene successfully");
+      console.log(
+        "Scene children count after adding model:",
+        scene.children.length
+      );
     },
     function (progress) {
       console.log(
-        "Loading progress: " + (progress.loaded / progress.total) * 100 + "%"
+        "Loading progress: " +
+          Math.round((progress.loaded / progress.total) * 100) +
+          "%"
       );
     },
     function (error) {
       console.error("Error loading Backrooms model:", error);
+      console.log("Creating fallback geometry instead");
       // エラー時にはフォールバック用のシンプルなジオメトリを表示
       createFallbackGeometry();
     }
@@ -272,9 +306,10 @@ function initThreeJS() {
 
   // フォールバック用のジオメトリ
   function createFallbackGeometry() {
+    console.log("Creating fallback geometry");
     const geometry = new THREE.BoxGeometry(2, 2, 2);
     const material = new THREE.MeshLambertMaterial({
-      color: 0x9966cc,
+      color: 0x00ff00, // 緑色に変更して見やすく
       transparent: true,
       opacity: 0.8,
     });
@@ -284,6 +319,8 @@ function initThreeJS() {
     cube.receiveShadow = true;
     scene.add(cube);
     model = cube;
+    console.log("Fallback cube added to scene");
+    console.log("Total objects in scene:", scene.children.length);
   }
 
   // カメラの初期位置
@@ -297,7 +334,6 @@ function initThreeJS() {
   let targetRotationY = 0;
 
   // マウスムーブメントイベント（ヒーローセクション全体で反応）
-  const heroSection = document.querySelector(".hero");
   heroSection.addEventListener("mousemove", function (event) {
     const rect = heroSection.getBoundingClientRect();
     mouseX = ((event.clientX - rect.left) / heroSection.offsetWidth) * 2 - 1;
@@ -314,8 +350,15 @@ function initThreeJS() {
   });
 
   // アニメーションループ
+  let frameCount = 0;
   function animate() {
     requestAnimationFrame(animate);
+
+    frameCount++;
+    if (frameCount % 60 === 0) {
+      // 60フレームごとにログ出力
+      console.log("Animation frame:", frameCount, "Model exists:", !!model);
+    }
 
     // モデルの自動回転
     if (model) {

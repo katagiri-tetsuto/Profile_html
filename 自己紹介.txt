@@ -26,7 +26,7 @@
 氏名：片桐　徹人　Katagiri Tetsuto
 部署：クラウド＆ビジネスアプリケーション事業本部ServiceNow事業部配属　研修期間
 メール：t.katagiri@jp.fujitsu.com
-DM：
+DM：msteams:/l/chat/0/0?users=t.katagiri@jp.fujitsu.com
 
 SNS（アイコン）
 LinkdIn:https://www.linkedin.com/in/徹人-片桐-9ab055322
