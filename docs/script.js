@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Three.js 3Dオブジェクトのセットアップ
   initThreeJS();
 
+  // カルーセル機能のセットアップ
+  initCarousel();
+
   // ナビゲーションリンクのクリック処理
   const navLinks = document.querySelectorAll(".nav-menu a");
 
@@ -377,4 +380,47 @@ function initThreeJS() {
 
     renderer.setSize(width, height);
   });
+}
+
+// カルーセル機能
+function initCarousel() {
+  const track = document.getElementById("carouselTrack");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const cards = track.querySelectorAll(".interest-card");
+  const cardWidth = 400; // min-width of interest-card
+  const gap = 32; // 2rem gap
+  const slideWidth = cardWidth + gap;
+
+  let currentIndex = 0;
+  const maxIndex = Math.max(0, cards.length - 2); // Show 2 cards at a time
+
+  function updateCarousel() {
+    const offset = -currentIndex * slideWidth;
+    track.style.transform = `translateX(${offset}px)`;
+
+    // Update button states
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= maxIndex;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  // Initialize carousel
+  updateCarousel();
 }

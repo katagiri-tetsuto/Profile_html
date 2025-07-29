@@ -379,19 +379,123 @@ section {
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
-  align-items: center;
 }
 
-.about-text {
+.about-intro {
+  text-align: left;
   font-size: 1.1rem;
   line-height: 1.8;
+  max-width: 800px;
 }
 
-.about-text p {
+.about-intro p {
   margin-bottom: 1.5rem;
+}
+
+.interests-section {
+  margin: 2rem 0;
+}
+
+.interests-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.interests-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 2rem;
+}
+
+.interest-card {
+  min-width: 400px;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.interest-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(153, 102, 204, 0.3);
+}
+
+.interest-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.interest-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.interest-content {
+  padding: 1.5rem;
+}
+
+.interest-content h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.interest-content p {
+  line-height: 1.6;
+  color: var(--dark-gray);
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.carousel-btn {
+  background: var(--gradient-1);
+  border: none;
+  color: var(--white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.carousel-btn:hover {
+  background: var(--gradient-3);
+  transform: scale(1.1);
+}
+
+.carousel-btn:disabled {
+  background: var(--gray);
+  cursor: not-allowed;
+  transform: none;
 }
 
 .note-section {
@@ -399,36 +503,12 @@ section {
   padding: 2rem;
   border-radius: 15px;
   margin-top: 2rem;
+  text-align: center;
 }
 
-.pet-placeholder {
-  width: 200px;
-  height: 200px;
-  border-radius: 15px;
-  background: var(--gradient-2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
-  font-size: 3rem;
-  margin: 0 auto;
-}
-
-.pet-placeholder p {
-  font-size: 1rem;
-  margin-top: 1rem;
-}
-
-.pet-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 15px;
-  object-fit: cover;
-  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.3);
-  border: 4px solid var(--white);
-  margin: 0 auto;
-  display: block;
+.note-section p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
 }
 
 /* Belief Section */
