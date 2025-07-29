@@ -253,17 +253,6 @@ function initThreeJS() {
     "Attempting to load GLB file from: ../3D_Objects/Backrooms_tem.glb"
   );
 
-  // 即座にフォールバックを作成してテスト
-  createFallbackGeometry();
-
-  // 一定時間後にフォールバックを実行（ファイルが見つからない場合の対策）
-  setTimeout(() => {
-    if (!model) {
-      console.log("Model not loaded after 2 seconds, creating fallback");
-      createFallbackGeometry();
-    }
-  }, 2000);
-
   loader.load(
     "../3D_Objects/Backrooms_tem.glb",
     function (gltf) {
