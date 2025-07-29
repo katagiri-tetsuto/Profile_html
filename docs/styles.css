@@ -395,6 +395,31 @@ section {
   margin-bottom: 1.5rem;
 }
 
+.about-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text .about-intro {
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: none;
+}
+
+.about-text .about-intro p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: var(--dark-gray);
+}
+
 .interests-section {
   margin: 2rem 0;
 }
@@ -406,10 +431,29 @@ section {
   text-align: center;
 }
 
+.interests-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.interests-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.interests-text p {
+  line-height: 1.6;
+  color: var(--dark-gray);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
 .interests-carousel {
   position: relative;
-  width: 100%;
-  overflow: hidden;
+  width: 400px;
+  flex-shrink: 0;
 }
 
 .carousel-container {
@@ -421,16 +465,17 @@ section {
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
-  gap: 2rem;
 }
 
 .interest-card {
   min-width: 400px;
+  width: 400px;
   background: var(--white);
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(153, 102, 204, 0.2);
   overflow: hidden;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .interest-card:hover {
@@ -815,4 +860,36 @@ html {
 .timeline,
 .skills-grid {
   animation: fadeInUp 0.8s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-text {
+    min-width: auto;
+  }
+
+  .interests-layout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .interests-text {
+    min-width: auto;
+  }
+
+  .interests-carousel {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .interest-card {
+    min-width: 100%;
+    width: 100%;
+  }
 }

@@ -391,12 +391,11 @@ function initCarousel() {
   if (!track || !prevBtn || !nextBtn) return;
 
   const cards = track.querySelectorAll(".interest-card");
-  const cardWidth = 400; // min-width of interest-card
-  const gap = 32; // 2rem gap
-  const slideWidth = cardWidth + gap;
+  const cardWidth = 400; // width of interest-card
+  const slideWidth = cardWidth; // No gap needed for single card display
 
   let currentIndex = 0;
-  const maxIndex = Math.max(0, cards.length - 2); // Show 2 cards at a time
+  const maxIndex = Math.max(0, cards.length - 1); // Show 1 card at a time
 
   function updateCarousel() {
     const offset = -currentIndex * slideWidth;
