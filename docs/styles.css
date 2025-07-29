@@ -545,14 +545,19 @@ section {
 
 .note-section {
   background: var(--gradient-2);
-  padding: 2rem;
+  padding: 1.2rem 2rem;
   border-radius: 15px;
   margin-top: 2rem;
   text-align: center;
 }
 
 .note-section p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.note-section .btn {
+  padding: 12px 90px;
   font-size: 1.1rem;
 }
 
