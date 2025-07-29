@@ -135,32 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // レスポンシブメニュー（簡易版）
-  const navbar = document.querySelector(".navbar");
-  const navMenu = document.querySelector(".nav-menu");
-
-  if (window.innerWidth <= 768) {
-    // モバイル対応のメニュー表示制御
-    let isMenuOpen = false;
-
-    navbar.addEventListener("click", function () {
-      if (isMenuOpen) {
-        navMenu.style.display = "none";
-        isMenuOpen = false;
-      } else {
-        navMenu.style.display = "flex";
-        navMenu.style.flexDirection = "column";
-        navMenu.style.position = "absolute";
-        navMenu.style.top = "100%";
-        navMenu.style.left = "0";
-        navMenu.style.right = "0";
-        navMenu.style.background = "rgba(153, 102, 204, 0.95)";
-        navMenu.style.padding = "1rem";
-        isMenuOpen = true;
-      }
-    });
-  }
-
   // キーボードナビゲーション（矢印キー）
   document.addEventListener("keydown", function (e) {
     const sections = [
