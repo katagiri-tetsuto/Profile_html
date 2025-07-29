@@ -391,7 +391,7 @@ function initCarousel() {
   if (!track || !prevBtn || !nextBtn) return;
 
   const cards = track.querySelectorAll(".interest-card");
-  const cardWidth = 400; // width of interest-card
+  const cardWidth = 550; // width of interest-card (updated size)
   const slideWidth = cardWidth; // No gap needed for single card display
 
   let currentIndex = 0;
