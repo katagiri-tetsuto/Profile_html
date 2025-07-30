@@ -22,22 +22,8 @@ body {
   --gradient-3: linear-gradient(135deg, #7b68ee, #9966cc);
   --white: #ffffff;
   --light-gray: #f8f9fa;
-  --gray: .work-item-small {
-  justify-content: flex-end;
-  padding-right: 2rem;
-}
-
-.work-item-small .work-media {
-  max-width: 600px;
-  min-width: 500px;
-}
-
-.work-item-small .work-media video {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 450px;
-} --dark-gray: #343a40;
+  --gray: #6c757d;
+  --dark-gray: #343a40;
 }
 
 /* Container */
@@ -630,7 +616,7 @@ section {
 .work-item {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
   margin-bottom: 12rem;
   padding: 4rem 0;
   flex-direction: row;
@@ -650,16 +636,36 @@ section {
   min-width: 450px;
 }
 
-.work-item-small .work-media {
-  max-width: 600px;
-  min-width: 500px;
+/* 3作品目専用のスタイル */
+.work-item-third {
+  justify-content: center;
+  margin-left: 8rem;
+  gap: 5rem;
 }
 
-.work-item-small .work-media video {
+.work-item-third .work-media {
+  max-width: 700px;
+  min-width: 600px;
+}
+
+.work-item-third .work-media video {
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 400px;
+  max-height: 500px;
+}
+
+.work-item-third .work-video-player {
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.work-item-third .work-info {
+  padding: 2rem;
+  margin-right: 8rem;
+  margin-left: -15rem;
 }
 
 .work-media {
@@ -693,13 +699,6 @@ section {
   outline-offset: 2px;
 }
 
-/* 3作品目専用のスタイル */
-.work-item-small .work-video-player {
-  height: 400px;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
 .work-photo {
   width: 100%;
   height: auto;
@@ -709,7 +708,7 @@ section {
 
 .work-info {
   flex: 1;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 1rem;
   min-width: 400px;
 }
 
