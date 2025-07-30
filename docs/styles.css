@@ -405,7 +405,7 @@ section {
 .about-text {
   flex: 1;
   min-width: 300px;
-  margin-top: -5rem;
+  margin-top: -0rem;
 }
 
 .about-text .about-intro {
@@ -498,7 +498,7 @@ section {
 
 .interest-content {
   padding: 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .interest-content h4 {
