@@ -617,9 +617,13 @@ section {
   display: flex;
   align-items: center;
   gap: 3rem;
-  margin-bottom: 12rem;
+  margin-bottom: 25rem;
   padding: 4rem 0;
   flex-direction: row;
+}
+
+.work-item:last-child {
+  margin-bottom: 0;
 }
 
 .work-item-reverse {
@@ -729,7 +733,7 @@ section {
   background: var(--gradient-2);
   padding: 2rem;
   border-radius: 15px;
-  margin-top: 3rem;
+  margin-top: -20rem;
   text-align: center;
 }
 
