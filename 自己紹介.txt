@@ -69,11 +69,29 @@ URL：https://note.com/katagiri_tetsuto
 URL：
 
 [Works]
-Blenderを用いてThe Backroomsを再現しました。
-…動画
+選抜作品
 
-その他最近の作成
-…動画
+星花.png
+「星空（処女作）」
+blenderで作成した3DCGの処女作です。
+星雲は手書きで表現し、海はセルルック調に作成しました。
+
+Raycasted_Sarus.mp4
+「ホログラム映像の恐竜」
+ジオメトリノードの勉強の一環で作成した3DCGアニメーションです。
+ライティング表現に一番力を入れました。
+恐竜と照明のモデルはアセットを利用しています。
+
+TheBackrooms.mp4
+「The Backroomsシリーズ再現」
+有名インターネットミームのThe Backroomsを3DCGで再現しました。
+スマホ撮影調のアニメーションとし、歩行による手振れや視点の動きを再現しています。
+光のぼやけやカメラの色相ずれ表現など、ライディング表現を工夫しています。
+
+その他の作品
+一部はYouTubeにて公開しています。
+ぜひご覧ください。
+URL:https://youtube.com/@azamiushi
 
 [Career]
 広島大学（2021年4月 ～ 2025年3月）
