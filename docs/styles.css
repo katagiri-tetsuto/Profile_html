@@ -613,75 +613,83 @@ section {
   justify-content: center;
 }
 
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
-}
-
-.work-card {
-  background: var(--white);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(153, 102, 204, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.work-card:hover {
-  transform: translateY(-5px);
-}
-
-.work-image {
-  height: 200px;
-  background: var(--gradient-2);
+.work-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
-  font-size: 4rem;
-  overflow: hidden;
+  gap: 6rem;
+  margin-bottom: 12rem;
+  padding: 4rem 0;
+  flex-direction: row;
+}
+
+.work-item-reverse {
+  flex-direction: row-reverse !important;
+}
+
+.work-media {
+  flex: 1;
+  max-width: 700px;
+  min-width: 600px;
+}
+
+.work-media img,
+.work-media video {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.2);
 }
 
 .work-video-player {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.2);
 }
 
 .work-photo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(153, 102, 204, 0.2);
 }
 
-.work-content {
-  padding: 2rem;
+.work-info {
+  flex: 1;
+  padding: 3rem;
+  min-width: 400px;
 }
 
-.work-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-.work-content p {
+.work-info h3 {
+  font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.work-video {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
   color: var(--primary-color);
-  font-size: 1.1rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  line-height: 1.3;
 }
 
-.work-video:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
+.work-info p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--dark-gray);
+}
+
+.youtube-section {
+  background: var(--gradient-2);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.youtube-section p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+}
+
+.youtube-section .btn {
+  padding: 12px 40px;
+  font-size: 1.1rem;
 }
 
 /* Career Section */
@@ -863,7 +871,8 @@ html {
 .profile-content,
 .about-content,
 .belief-content,
-.works-grid,
+.work-item,
+.youtube-section,
 .timeline,
 .skills-grid {
   animation: fadeInUp 0.8s ease-out;
@@ -898,5 +907,16 @@ html {
   .interest-card {
     min-width: 100%;
     width: 100%;
+  }
+
+  .work-item,
+  .work-item-reverse {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .work-media,
+  .work-info {
+    max-width: 100%;
   }
 }
