@@ -1081,15 +1081,3 @@ html {
     min-width: auto;
   }
 }
-
-@media (max-width: 1200px) and (min-width: 769px) {
-  .skill-items {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 1600px) and (min-width: 1201px) {
-  .skill-items {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
