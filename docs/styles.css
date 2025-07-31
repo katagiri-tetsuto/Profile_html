@@ -801,7 +801,7 @@ section {
 }
 
 .career-item {
-  margin-bottom: 1.2rem;
+  margin-bottom: 3rem;
   padding-left: 125px; /* アイコン幅 + マージン + ドット幅 */
   position: relative;
   margin-left: 0; /* マージンをリセット */
@@ -813,7 +813,7 @@ section {
   content: "●";
   position: absolute;
   left: 50px; /* アイコンの中央位置（100px / 2）に配置 */
-  top: 0.3rem;
+  top: 0rem;
   color: var(--primary-color);
   font-size: 0.8rem;
   z-index: 3;
@@ -828,10 +828,10 @@ section {
   position: absolute;
   left: 55px; /* ドットの中央 */
   top: 0.5rem; /* ドットの下から開始 */
-  bottom: -1rem; /* 次のcareer-itemの上まで */
+  bottom: -2.7rem; /* 次のcareer-itemの上まで */
   width: 3px;
   background: var(--primary-color);
-  opacity: 0.7;
+  opacity: 0.8;
   z-index: 1;
 }
 
