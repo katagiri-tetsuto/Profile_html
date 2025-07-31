@@ -777,11 +777,14 @@ section {
   margin-bottom: 0;
 }
 
+/* 組織セクション全体の縦線は削除 */
+
 .career-header {
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
   position: relative;
+  z-index: 2;
 }
 
 .company-icon {
@@ -802,15 +805,34 @@ section {
   padding-left: 125px; /* アイコン幅 + マージン + ドット幅 */
   position: relative;
   margin-left: 0; /* マージンをリセット */
+  z-index: 2;
 }
 
+/* 各経歴項目の「・」 */
 .career-item::before {
   content: "●";
   position: absolute;
   left: 50px; /* アイコンの中央位置（100px / 2）に配置 */
-  top: 0.2rem;
+  top: 0.3rem;
   color: var(--primary-color);
   font-size: 0.8rem;
+  z-index: 3;
+  background: var(--light-gray); /* 背景色を設定 */
+  padding: 3px;
+  border-radius: 50%;
+}
+
+/* 同一組織内の経歴項目間を結ぶ線のみ */
+.career-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 55px; /* ドットの中央 */
+  top: 0.5rem; /* ドットの下から開始 */
+  bottom: -1rem; /* 次のcareer-itemの上まで */
+  width: 3px;
+  background: var(--primary-color);
+  opacity: 0.7;
+  z-index: 1;
 }
 
 .career-position {
