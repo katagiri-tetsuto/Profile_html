@@ -37,7 +37,7 @@ body {
 /* Navigation */
 .navbar {
   background: var(--gradient-1);
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -1293,7 +1293,7 @@ section {
   background: var(--gradient-1);
   color: var(--white);
   text-align: center;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 /* Smooth Scrolling */
