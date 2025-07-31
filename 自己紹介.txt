@@ -186,7 +186,7 @@ blender:70
 
 
 Qualifications
-TOEIC:780
+ETS:TOEIC 780点
 CG-ARTS：CGエンジニア検定エキスパート
 Salesforce：認定アドミニストレーター
 Salesforce：認定AIアソシエイト
