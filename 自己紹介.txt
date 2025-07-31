@@ -186,15 +186,15 @@ blender:70
 
 
 Qualifications
-ETS:TOEIC 780点(2022年1月)
+2022年1月:TOEIC 780点(ETS)
 
-CG-ARTS：CGエンジニア検定エキスパート(2024年8月)
+2024年8月：CGエンジニア検定エキスパート(CG-ARTS)
 
-Salesforce：認定アドミニストレーター(2025年1月)
-Salesforce：認定AIアソシエイト(2025年1月)
+2025年1月：認定アドミニストレーター(Salesforce)
+2025年1月：認定AIアソシエイト(Salesforce)
 
 
 Awards
-2024年9月：ServiceNow Hackathon2024 アイデア部門特別賞
-2023年10月:体操競技中四国大会団体3位・個人9位
-2022年10月:体操競技中四国大会団体1位
+2024年9月：ServiceNowHackathon2024 アイデア部門特別賞(ServiceNow)
+2023年10月:体操競技中四国大会団体3位・個人9位(Gym)
+2022年10月:体操競技中四国大会団体1位(Gym)
