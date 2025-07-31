@@ -154,6 +154,9 @@ Salesforce:40
 Google Cloud:40
 Amazon web Service:10
 
+Tools
+Git/Github:50
+
 Others
 HTML:45
 CSS:45

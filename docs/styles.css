@@ -864,9 +864,9 @@ section {
 }
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   margin-bottom: 3rem;
 }
 
@@ -878,26 +878,89 @@ section {
 }
 
 .skill-category h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
   color: var(--primary-color);
   text-align: center;
 }
 
-.skill-tags {
+.skill-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.skill-item {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--light-gray);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  min-width: 280px;
+  width: 100%;
+}
+
+.skill-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(153, 102, 204, 0.2);
+}
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.skill-content {
+  flex: 1;
+}
+
+.skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.skill-score {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
-.skill-tag {
-  background: var(--gradient-2);
-  color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
+.skill-score-label {
+  font-size: 0.8rem;
+  color: var(--gray);
+  min-width: 30px;
 }
+
+.skill-progress {
+  flex: 1;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: var(--gradient-1);
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.skill-score-value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  min-width: 25px;
+  text-align: right;
+}
+
+/* 既存のskill-tagsとskill-tagスタイルは削除 */
 
 .certifications {
   background: var(--white);
@@ -1008,5 +1071,25 @@ html {
   .work-media,
   .work-info {
     max-width: 100%;
+  }
+
+  .skill-items {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-item {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  .skill-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1600px) and (min-width: 1201px) {
+  .skill-items {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
