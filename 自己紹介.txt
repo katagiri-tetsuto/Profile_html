@@ -186,11 +186,12 @@ blender:70
 
 
 Qualifications
-ETS:TOEIC 780点
-CG-ARTS：CGエンジニア検定エキスパート
-Salesforce：認定アドミニストレーター
-Salesforce：認定AIアソシエイト
+ETS:TOEIC 780点(2022年1月)
 
+CG-ARTS：CGエンジニア検定エキスパート(2024年8月)
+
+Salesforce：認定アドミニストレーター(2025年1月)
+Salesforce：認定AIアソシエイト(2025年1月)
 
 
 Awards
