@@ -863,11 +863,18 @@ section {
   justify-content: center;
 }
 
+.stacks-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
 .skills-grid {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .skill-category {
@@ -993,11 +1000,12 @@ section {
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(153, 102, 204, 0.1);
+  margin-top: 10rem;
 }
 
 .certifications h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
   color: var(--primary-color);
   text-align: center;
 }
@@ -1086,12 +1094,12 @@ section {
 
 /* Awards Section */
 .awards {
-  margin-top: 2rem;
+  margin-top: 10rem;
 }
 
 .awards h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
   color: var(--primary-color);
   text-align: center;
 }
