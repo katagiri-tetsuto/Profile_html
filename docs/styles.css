@@ -1022,6 +1022,110 @@ section {
   font-size: 1.2rem;
 }
 
+/* Score Criteria Panel */
+.score-criteria-panel {
+  position: fixed;
+  right: -350px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 350px;
+  z-index: 1000;
+  transition: right 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.score-criteria-panel.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.score-criteria-panel.show {
+  right: 0;
+}
+
+.score-criteria-toggle {
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--gradient-1);
+  color: var(--white);
+  padding: 15px 8px;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  box-shadow: -2px 0 10px rgba(153, 102, 204, 0.3);
+}
+
+.score-criteria-toggle:hover {
+  background: var(--gradient-3);
+  transform: translateY(-50%) translateX(-5px);
+}
+
+.toggle-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.score-criteria-toggle i {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.score-criteria-content {
+  background: var(--white);
+  border-radius: 15px 0 0 15px;
+  padding: 20px;
+  box-shadow: -5px 0 20px rgba(153, 102, 204, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid var(--primary-color);
+}
+
+.score-criteria-content h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
+
+.criteria-section {
+  margin-bottom: 20px;
+}
+
+.criteria-section h5 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  background: var(--gradient-2);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.criteria-item {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: var(--light-gray);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.criteria-item strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
 /* Footer */
 .footer {
   background: var(--gradient-1);

@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // カルーセル機能のセットアップ
   initCarousel();
 
+  // スコア評価基準パネルのセットアップ
+  initScoreCriteriaPanel();
+
   // ナビゲーションリンクのクリック処理
   const navLinks = document.querySelectorAll(".nav-menu a");
 
@@ -98,7 +101,29 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(element);
   });
 
-  // スキルタグのホバー効果
+  // skillsセクションの監視を追加（スコア評価基準パネル用）
+  const skillsSection = document.getElementById("skills");
+  if (skillsSection) {
+    const skillsObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach((entry) => {
+          const scoreCriteriaPanel = document.getElementById(
+            "score-criteria-panel"
+          );
+          if (scoreCriteriaPanel) {
+            if (entry.isIntersecting) {
+              scoreCriteriaPanel.classList.add("visible");
+            } else {
+              scoreCriteriaPanel.classList.remove("visible", "show");
+            }
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    skillsObserver.observe(skillsSection);
+  } // スキルタグのホバー効果
   const skillTags = document.querySelectorAll(".skill-tag");
 
   skillTags.forEach((tag) => {
@@ -422,4 +447,37 @@ function initCarousel() {
 
   // Initialize carousel
   updateCarousel();
+}
+
+// スコア評価基準パネル機能
+function initScoreCriteriaPanel() {
+  const panel = document.getElementById("score-criteria-panel");
+  const toggle = document.getElementById("score-criteria-toggle");
+
+  if (!panel || !toggle) return;
+
+  let isOpen = false;
+
+  toggle.addEventListener("click", () => {
+    isOpen = !isOpen;
+
+    if (isOpen) {
+      panel.classList.add("show");
+    } else {
+      panel.classList.remove("show");
+    }
+  });
+
+  // パネル外をクリックした時に閉じる
+  document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && isOpen) {
+      isOpen = false;
+      panel.classList.remove("show");
+    }
+  });
+
+  // パネル内のクリックイベントを停止（バブリングを防ぐ）
+  panel.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
 }
