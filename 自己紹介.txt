@@ -141,6 +141,9 @@ Python:60
 Rust:10
 JavaScript:60
 Dart:38
+HTML:45
+CSS:45
+SQL:53
 
 Frameworks
 Flutter:38
@@ -156,11 +159,6 @@ Amazon web Service:10
 
 Tools
 Git/Github:50
-
-Others
-HTML:45
-CSS:45
-SQL:53
 
 3D
 blender:70
