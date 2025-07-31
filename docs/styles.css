@@ -1046,12 +1046,12 @@ section {
 
 .score-criteria-toggle {
   position: absolute;
-  left: -80px;
+  left: -50px;
   top: 50%;
   transform: translateY(-50%);
   background: var(--gradient-1);
   color: var(--white);
-  padding: 15px 8px;
+  padding: 18px 7px;
   border-radius: 10px 0 0 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1060,8 +1060,9 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 0px;
   box-shadow: -2px 0 10px rgba(153, 102, 204, 0.3);
+  min-height: 120px;
 }
 
 .score-criteria-toggle:hover {
@@ -1070,7 +1071,7 @@ section {
 }
 
 .toggle-text {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;
 }
