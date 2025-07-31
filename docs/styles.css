@@ -895,7 +895,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.7rem;
+  padding: 0.5rem;
   background: var(--light-gray);
   border-radius: 10px;
   transition: transform 0.3s ease;
@@ -924,10 +924,11 @@ section {
 }
 
 .skill-name {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--primary-color);
-  margin-bottom: 0.3rem;
+  margin-bottom: -0.2rem;
+  margin-left: 0.8rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -935,36 +936,53 @@ section {
 
 .skill-score {
   display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: relative;
+}
+
+.skill-score-value {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: -0.3rem;
+}
+
+.skill-progress-container {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.2rem;
+  position: relative;
 }
 
 .skill-score-label {
-  font-size: 0.7rem;
-  color: var(--gray);
-  min-width: 25px;
+  font-size: 0.6rem;
+  color: #888;
+  min-width: 8px;
+  margin-right: 2px;
 }
 
 .skill-progress {
   flex: 1;
-  height: 4px;
+  height: 6px;
   background: #e0e0e0;
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
+  position: relative;
 }
 
 .skill-progress-bar {
   height: 100%;
   background: var(--gradient-1);
-  border-radius: 2px;
+  border-radius: 3px;
   transition: width 0.8s ease;
 }
 
-.skill-score-value {
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  min-width: 22px;
+.skill-score-max {
+  font-size: 0.6rem;
+  color: #888;
+  min-width: 18px;
   text-align: right;
 }
 
