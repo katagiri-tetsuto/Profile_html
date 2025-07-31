@@ -769,6 +769,7 @@ section {
   margin-bottom: 3rem;
   padding-bottom: 2rem;
   border-bottom: 2px solid #e0e0e0;
+  position: relative;
 }
 
 .career-entry:last-child {
@@ -779,14 +780,15 @@ section {
 .career-header {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 .company-icon {
   width: 100px;
   height: 100px;
   object-fit: contain;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
 }
 
 .company-name {
@@ -797,14 +799,15 @@ section {
 
 .career-item {
   margin-bottom: 1.2rem;
-  padding-left: 3rem;
+  padding-left: 125px; /* アイコン幅 + マージン + ドット幅 */
   position: relative;
+  margin-left: 0; /* マージンをリセット */
 }
 
 .career-item::before {
   content: "●";
   position: absolute;
-  left: 1rem;
+  left: 50px; /* アイコンの中央位置（100px / 2）に配置 */
   top: 0.2rem;
   color: var(--primary-color);
   font-size: 0.8rem;
