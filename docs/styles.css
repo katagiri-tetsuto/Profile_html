@@ -1100,6 +1100,15 @@ section {
   padding-bottom: 10px;
 }
 
+.criteria-note {
+  font-size: 0.75rem;
+  color: var(--gray);
+  text-align: center;
+  margin-bottom: 25px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
 .criteria-section {
   margin-bottom: 20px;
 }
