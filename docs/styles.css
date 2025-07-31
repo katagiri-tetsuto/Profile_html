@@ -1124,6 +1124,8 @@ section {
   object-fit: contain;
   border-radius: 8px;
   flex-shrink: 0;
+  margin-left: 0.5rem;
+  margin-right: 0.25rem;
 }
 
 .award-info {
