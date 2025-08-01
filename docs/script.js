@@ -365,7 +365,7 @@ function initThreeJS() {
   }
 
   // カメラの初期位置
-  camera.position.set(0, 2, 5);
+  camera.position.set(0, 2, 8);
   camera.lookAt(0, 0, 0);
 
   // マウス制御のための変数
@@ -374,7 +374,7 @@ function initThreeJS() {
   let lastMouseY = 0;
 
   // カメラ制御のための変数
-  let cameraDistance = 5;
+  let cameraDistance = 8;
   let cameraAngleX = 0;
   let cameraAngleY = 0;
   const minDistance = 2;
@@ -496,7 +496,7 @@ function initThreeJS() {
     isControlsEnabled = true;
 
     // 自動ズーム（少し近づく）
-    const targetDistance = 3; // 現在の5から3に変更
+    const targetDistance = 5; // 現在の5から3に変更
     const zoomDuration = 1000; // 1秒でズーム
     const startDistance = cameraDistance;
     const startTime = Date.now();
