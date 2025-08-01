@@ -32,6 +32,30 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div id="threejs-container"></div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="hero-title">Hello, World!</h1>
+          <p class="hero-description">
+            3DCGソフトで作成したThe Backroomsシリーズのモデルを表示しています。
+          </p>
+          <div class="hero-controls">
+            <h3>操作方法</h3>
+            <ul class="controls-list">
+              <li><strong>マウス左ドラッグ:</strong> 視点回転</li>
+              <li><strong>マウスホイール:</strong> ズーム</li>
+              <li><strong>マウス右ドラッグ:</strong> 視点移動</li>
+            </ul>
+          </div>
+          <div class="hero-buttons">
+            <button class="hero-model-btn" onclick="closeHeroPopup()">
+              モデルを見る
+            </button>
+            <a href="#works" class="hero-cta-btn" onclick="scrollToBackrooms()">
+              完成した作品を見る
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Profile Section -->

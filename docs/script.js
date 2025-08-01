@@ -231,6 +231,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+
+  // The Backroomsの作品にスクロールする関数
+  function scrollToBackrooms() {
+    const backroomsElement = document.querySelector(".work-item-third");
+    if (backroomsElement) {
+      const navHeight = document.querySelector(".navbar").offsetHeight;
+      const targetPosition = backroomsElement.offsetTop - navHeight - 20; // 少し余裕を持たせる
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
+    }
+  }
 });
 
 // Three.js初期化関数
@@ -285,14 +299,14 @@ function initThreeJS() {
   console.log("Three.js scene initialized with lighting");
   console.log("Scene children count:", scene.children.length);
 
-  // GLTFLoaderでbokoglin.glbを読み込み
+  // GLTFLoaderでBackrooms_tem.glbを読み込み
   const loader = new THREE.GLTFLoader();
   let model = null;
 
-  console.log("Attempting to load GLB file from: 3D_Objects/bokoglin.glb");
+  console.log("Attempting to load GLB file from: 3D_Objects/Backrooms_tem.glb");
 
   loader.load(
-    "3D_Objects/bokoglin.glb",
+    "3D_Objects/Backrooms_tem.glb",
     function (gltf) {
       console.log("GLB file loaded successfully:", gltf);
       model = gltf.scene;
@@ -310,7 +324,7 @@ function initThreeJS() {
       });
 
       scene.add(model);
-      console.log("bokoglin model added to scene successfully");
+      console.log("Backrooms_tem model added to scene successfully");
       console.log(
         "Scene children count after adding model:",
         scene.children.length
@@ -324,7 +338,7 @@ function initThreeJS() {
       );
     },
     function (error) {
-      console.error("Error loading bokoglin model:", error);
+      console.error("Error loading Backrooms_tem model:", error);
       console.log("Creating fallback geometry instead");
       // エラー時にはフォールバック用のシンプルなジオメトリを表示
       createFallbackGeometry();
@@ -490,4 +504,12 @@ function initScoreCriteriaPanel() {
   panel.addEventListener("click", (e) => {
     e.stopPropagation();
   });
+}
+
+// ポップアップを閉じる関数
+function closeHeroPopup() {
+  const heroOverlay = document.querySelector(".hero-overlay");
+  if (heroOverlay) {
+    heroOverlay.style.display = "none";
+  }
 }
