@@ -287,9 +287,18 @@ function initThreeJS() {
 
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
   directionalLight.position.set(10, 10, 5);
-  directionalLight.castShadow = true;
-  directionalLight.shadow.mapSize.width = 2048;
-  directionalLight.shadow.mapSize.height = 2048;
+  directionalLight.castShadow = false;
+  // directionalLight.shadow.mapSize.width = 2048;
+  // directionalLight.shadow.mapSize.height = 2048;
+
+  // // シャドウカメラの設定を追加して紫色の正方形を修正
+  // directionalLight.shadow.camera.near = 0.1;
+  // directionalLight.shadow.camera.far = 50;
+  // directionalLight.shadow.camera.left = -20;
+  // directionalLight.shadow.camera.right = 20;
+  // directionalLight.shadow.camera.top = 20;
+  // directionalLight.shadow.camera.bottom = -20;
+
   scene.add(directionalLight);
 
   const pointLight = new THREE.PointLight(0xb19cd9, 0.5, 100);
