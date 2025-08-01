@@ -392,13 +392,37 @@ function initThreeJS() {
     const zoomSpeed = 0.3;
     const deltaY = event.deltaY;
 
+    // 現在のカメラ位置から原点へのベクトルを計算
+    const currentPosition = camera.position.clone();
+    const direction = currentPosition.clone().normalize();
+
+    // ズーム方向を決定
     if (deltaY > 0) {
-      cameraDistance = Math.min(cameraDistance + zoomSpeed, maxDistance);
+      // ズームアウト：原点から離れる方向
+      const newPosition = currentPosition
+        .clone()
+        .add(direction.multiplyScalar(zoomSpeed));
+      const newDistance = newPosition.length();
+
+      if (newDistance <= maxDistance) {
+        camera.position.copy(newPosition);
+        cameraDistance = newDistance;
+      }
     } else {
-      cameraDistance = Math.max(cameraDistance - zoomSpeed, minDistance);
+      // ズームイン：原点に近づく方向
+      const newPosition = currentPosition
+        .clone()
+        .sub(direction.multiplyScalar(zoomSpeed));
+      const newDistance = newPosition.length();
+
+      if (newDistance >= minDistance) {
+        camera.position.copy(newPosition);
+        cameraDistance = newDistance;
+      }
     }
 
-    updateCameraPosition();
+    // ターゲットを見続ける
+    camera.lookAt(0, 0, 0);
   }
 
   // マウスホイールボタンでの視点回転
