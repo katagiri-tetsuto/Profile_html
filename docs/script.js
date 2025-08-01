@@ -380,8 +380,13 @@ function initThreeJS() {
   const minDistance = 2;
   const maxDistance = 15;
 
+  // 操作制御のための変数
+  let isControlsEnabled = false;
+
   // マウスホイールでズーム機能
-  heroSection.addEventListener("wheel", function (event) {
+  function handleWheel(event) {
+    if (!isControlsEnabled) return;
+
     event.preventDefault();
 
     const zoomSpeed = 0.3;
@@ -394,10 +399,12 @@ function initThreeJS() {
     }
 
     updateCameraPosition();
-  });
+  }
 
   // マウスホイールボタンでの視点回転
-  heroSection.addEventListener("mousedown", function (event) {
+  function handleMouseDown(event) {
+    if (!isControlsEnabled) return;
+
     if (event.button === 1) {
       // マウスホイールボタン（中ボタン）
       event.preventDefault();
@@ -406,51 +413,75 @@ function initThreeJS() {
       lastMouseY = event.clientY;
       heroSection.style.cursor = "grabbing";
     }
-  });
+  }
 
-  heroSection.addEventListener("mousemove", function (event) {
-    if (isMouseDown) {
-      event.preventDefault();
+  function handleMouseMove(event) {
+    if (!isControlsEnabled || !isMouseDown) return;
 
-      const deltaX = event.clientX - lastMouseX;
-      const deltaY = event.clientY - lastMouseY;
+    event.preventDefault();
 
-      const rotationSpeed = 0.005;
-      cameraAngleY += deltaX * rotationSpeed;
-      cameraAngleX += deltaY * rotationSpeed;
+    const deltaX = event.clientX - lastMouseX;
+    const deltaY = event.clientY - lastMouseY;
 
-      // X軸回転を制限（上下の制限）
-      cameraAngleX = Math.max(
-        -Math.PI / 3,
-        Math.min(Math.PI / 3, cameraAngleX)
-      );
+    const rotationSpeed = 0.005;
+    cameraAngleY += deltaX * rotationSpeed;
+    cameraAngleX += deltaY * rotationSpeed;
 
-      lastMouseX = event.clientX;
-      lastMouseY = event.clientY;
+    // X軸回転を制限（上下の制限）
+    cameraAngleX = Math.max(-Math.PI / 3, Math.min(Math.PI / 3, cameraAngleX));
 
-      updateCameraPosition();
-    }
-    // カーソル位置によるモデル回転機能を削除
-  });
+    lastMouseX = event.clientX;
+    lastMouseY = event.clientY;
 
-  heroSection.addEventListener("mouseup", function (event) {
+    updateCameraPosition();
+  }
+
+  function handleMouseUp(event) {
+    if (!isControlsEnabled) return;
+
     if (event.button === 1) {
       // マウスホイールボタン
       isMouseDown = false;
       heroSection.style.cursor = "default";
     }
-  });
+  }
 
-  // マウスリーブイベント
-  heroSection.addEventListener("mouseleave", function () {
+  function handleMouseLeave() {
+    if (!isControlsEnabled) return;
+
     isMouseDown = false;
     heroSection.style.cursor = "default";
-  });
+  }
 
-  // コンテキストメニューを無効化（中ボタンクリック時）
-  heroSection.addEventListener("contextmenu", function (event) {
+  function handleContextMenu(event) {
+    if (!isControlsEnabled) return;
+
     event.preventDefault();
-  });
+  }
+
+  // イベントリスナーを追加
+  heroSection.addEventListener("wheel", handleWheel);
+  heroSection.addEventListener("mousedown", handleMouseDown);
+  heroSection.addEventListener("mousemove", handleMouseMove);
+  heroSection.addEventListener("mouseup", handleMouseUp);
+  heroSection.addEventListener("mouseleave", handleMouseLeave);
+  heroSection.addEventListener("contextmenu", handleContextMenu);
+
+  // 操作を有効にする関数
+  window.enableControls = function () {
+    isControlsEnabled = true;
+
+    // 操作方法ポップアップを表示
+    const controlsGuide = document.getElementById("controls-guide");
+    if (controlsGuide) {
+      controlsGuide.classList.remove("hidden");
+
+      // 5秒後に自動的に閉じる
+      setTimeout(() => {
+        controlsGuide.classList.add("hidden");
+      }, 5000);
+    }
+  };
 
   // カメラ位置更新関数
   function updateCameraPosition() {
@@ -580,4 +611,21 @@ function closeHeroPopup() {
   if (heroOverlay) {
     heroOverlay.style.display = "none";
   }
+
+  // 操作を有効にする
+  if (window.enableControls) {
+    window.enableControls();
+  }
 }
+
+// ページ読み込み時に操作方法ポップアップの閉じるボタンイベントを設定
+document.addEventListener("DOMContentLoaded", function () {
+  const closeBtn = document.getElementById("close-controls-guide");
+  const controlsGuide = document.getElementById("controls-guide");
+
+  if (closeBtn && controlsGuide) {
+    closeBtn.addEventListener("click", function () {
+      controlsGuide.classList.add("hidden");
+    });
+  }
+});
