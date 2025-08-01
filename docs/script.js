@@ -471,6 +471,30 @@ function initThreeJS() {
   window.enableControls = function () {
     isControlsEnabled = true;
 
+    // 自動ズーム（少し近づく）
+    const targetDistance = 3; // 現在の5から3に変更
+    const zoomDuration = 1000; // 1秒でズーム
+    const startDistance = cameraDistance;
+    const startTime = Date.now();
+
+    function animateZoom() {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / zoomDuration, 1);
+
+      // イージング関数（スムーズな動き）
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+      cameraDistance =
+        startDistance + (targetDistance - startDistance) * easeProgress;
+      updateCameraPosition();
+
+      if (progress < 1) {
+        requestAnimationFrame(animateZoom);
+      }
+    }
+
+    animateZoom();
+
     // 操作方法ポップアップを表示
     const controlsGuide = document.getElementById("controls-guide");
     if (controlsGuide) {
@@ -504,9 +528,9 @@ function initThreeJS() {
       console.log("Animation frame:", frameCount, "Model exists:", !!model);
     }
 
-    // モデルの自動回転（マウス操作がない場合のみ）
-    if (model && !isMouseDown) {
-      model.rotation.y += 0.005;
+    // モデルの自動回転（操作が無効で、マウス操作がない場合のみ）
+    if (model && !isControlsEnabled && !isMouseDown) {
+      model.rotation.y += 0.003; // 回転速度を遅くする（0.005 → 0.002）
     }
 
     // カメラの軽微な動きを削除（手動制御を優先）
