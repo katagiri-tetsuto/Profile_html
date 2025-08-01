@@ -369,10 +369,6 @@ function initThreeJS() {
   camera.lookAt(0, 0, 0);
 
   // マウス制御のための変数
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetRotationX = 0;
-  let targetRotationY = 0;
   let isMouseDown = false;
   let lastMouseX = 0;
   let lastMouseY = 0;
@@ -433,15 +429,8 @@ function initThreeJS() {
       lastMouseY = event.clientY;
 
       updateCameraPosition();
-    } else {
-      // 既存のマウスムーブメント処理（モデル回転用）
-      const rect = heroSection.getBoundingClientRect();
-      mouseX = ((event.clientX - rect.left) / heroSection.offsetWidth) * 2 - 1;
-      mouseY = -((event.clientY - rect.top) / heroSection.offsetHeight) * 2 + 1;
-
-      targetRotationY = mouseX * 0.5;
-      targetRotationX = mouseY * 0.3;
     }
+    // カーソル位置によるモデル回転機能を削除
   });
 
   heroSection.addEventListener("mouseup", function (event) {
@@ -454,8 +443,6 @@ function initThreeJS() {
 
   // マウスリーブイベント
   heroSection.addEventListener("mouseleave", function () {
-    targetRotationX = 0;
-    targetRotationY = 0;
     isMouseDown = false;
     heroSection.style.cursor = "default";
   });
@@ -489,10 +476,6 @@ function initThreeJS() {
     // モデルの自動回転（マウス操作がない場合のみ）
     if (model && !isMouseDown) {
       model.rotation.y += 0.005;
-
-      // マウスによる追加回転（スムーズに）
-      model.rotation.x += (targetRotationX - model.rotation.x) * 0.05;
-      model.rotation.y += (targetRotationY - model.rotation.y) * 0.05;
     }
 
     // カメラの軽微な動きを削除（手動制御を優先）
