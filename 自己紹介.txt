@@ -57,11 +57,11 @@ noteに色々と書いてます。見てね！なずちゃんの名前の由来�
 URL：https://note.com/katagiri_tetsuto
 
 [Belief]
+パーパス
+「Be creative, Be curious, Be spark」
+
 モットー
 変化と学びを積み重ね、好きと面白いに従って行動する
-
-パーパス
-「Be Creative」
 
 ロールモデル
 フリーレン
@@ -159,6 +159,8 @@ Amazon web Service:10
 
 Tools
 Git/Github:50
+docker:5
+kubernetes:5
 
 3D
 blender:70

@@ -101,10 +101,10 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(element);
   });
 
-  // skillsセクションの監視を追加（スコア評価基準パネル用）
-  const skillsSection = document.getElementById("skills");
-  if (skillsSection) {
-    const skillsObserver = new IntersectionObserver(
+  // stacksセクションの監視を追加（スコア評価基準パネル用）
+  const stacksSection = document.querySelector(".stacks-section");
+  if (stacksSection) {
+    const stacksObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach((entry) => {
           const scoreCriteriaPanel = document.getElementById(
@@ -122,7 +122,19 @@ document.addEventListener("DOMContentLoaded", function () {
       { threshold: 0.3 }
     );
 
-    skillsObserver.observe(skillsSection);
+    stacksObserver.observe(stacksSection);
+
+    // 初期状態でStacksセクションが既に画面内にある場合をチェック
+    const rect = stacksSection.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (isVisible) {
+      const scoreCriteriaPanel = document.getElementById(
+        "score-criteria-panel"
+      );
+      if (scoreCriteriaPanel) {
+        scoreCriteriaPanel.classList.add("visible");
+      }
+    }
   } // スキルタグのホバー効果
   const skillTags = document.querySelectorAll(".skill-tag");
 
@@ -273,16 +285,14 @@ function initThreeJS() {
   console.log("Three.js scene initialized with lighting");
   console.log("Scene children count:", scene.children.length);
 
-  // GLTFLoaderでBackrooms_tem.glbを読み込み
+  // GLTFLoaderでbokoglin.glbを読み込み
   const loader = new THREE.GLTFLoader();
   let model = null;
 
-  console.log(
-    "Attempting to load GLB file from: ../3D_Objects/Backrooms_tem.glb"
-  );
+  console.log("Attempting to load GLB file from: 3D_Objects/bokoglin.glb");
 
   loader.load(
-    "../3D_Objects/Backrooms_tem.glb",
+    "3D_Objects/bokoglin.glb",
     function (gltf) {
       console.log("GLB file loaded successfully:", gltf);
       model = gltf.scene;
@@ -300,7 +310,7 @@ function initThreeJS() {
       });
 
       scene.add(model);
-      console.log("Backrooms model added to scene successfully");
+      console.log("bokoglin model added to scene successfully");
       console.log(
         "Scene children count after adding model:",
         scene.children.length
@@ -314,7 +324,7 @@ function initThreeJS() {
       );
     },
     function (error) {
-      console.error("Error loading Backrooms model:", error);
+      console.error("Error loading bokoglin model:", error);
       console.log("Creating fallback geometry instead");
       // エラー時にはフォールバック用のシンプルなジオメトリを表示
       createFallbackGeometry();
