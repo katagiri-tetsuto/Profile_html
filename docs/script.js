@@ -345,7 +345,7 @@ function initThreeJS() {
     }
   );
 
-  // フォールバック用のジオメトリ
+  // フォールバック用のジオメトリ（削除）
   function createFallbackGeometry() {
     console.log("Creating fallback geometry");
     const geometry = new THREE.BoxGeometry(2, 2, 2);
@@ -373,22 +373,107 @@ function initThreeJS() {
   let mouseY = 0;
   let targetRotationX = 0;
   let targetRotationY = 0;
+  let isMouseDown = false;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
 
-  // マウスムーブメントイベント（ヒーローセクション全体で反応）
+  // カメラ制御のための変数
+  let cameraDistance = 5;
+  let cameraAngleX = 0;
+  let cameraAngleY = 0;
+  const minDistance = 2;
+  const maxDistance = 15;
+
+  // マウスホイールでズーム機能
+  heroSection.addEventListener("wheel", function (event) {
+    event.preventDefault();
+
+    const zoomSpeed = 0.3;
+    const deltaY = event.deltaY;
+
+    if (deltaY > 0) {
+      cameraDistance = Math.min(cameraDistance + zoomSpeed, maxDistance);
+    } else {
+      cameraDistance = Math.max(cameraDistance - zoomSpeed, minDistance);
+    }
+
+    updateCameraPosition();
+  });
+
+  // マウスホイールボタンでの視点回転
+  heroSection.addEventListener("mousedown", function (event) {
+    if (event.button === 1) {
+      // マウスホイールボタン（中ボタン）
+      event.preventDefault();
+      isMouseDown = true;
+      lastMouseX = event.clientX;
+      lastMouseY = event.clientY;
+      heroSection.style.cursor = "grabbing";
+    }
+  });
+
   heroSection.addEventListener("mousemove", function (event) {
-    const rect = heroSection.getBoundingClientRect();
-    mouseX = ((event.clientX - rect.left) / heroSection.offsetWidth) * 2 - 1;
-    mouseY = -((event.clientY - rect.top) / heroSection.offsetHeight) * 2 + 1;
+    if (isMouseDown) {
+      event.preventDefault();
 
-    targetRotationY = mouseX * 0.5;
-    targetRotationX = mouseY * 0.3;
+      const deltaX = event.clientX - lastMouseX;
+      const deltaY = event.clientY - lastMouseY;
+
+      const rotationSpeed = 0.005;
+      cameraAngleY += deltaX * rotationSpeed;
+      cameraAngleX += deltaY * rotationSpeed;
+
+      // X軸回転を制限（上下の制限）
+      cameraAngleX = Math.max(
+        -Math.PI / 3,
+        Math.min(Math.PI / 3, cameraAngleX)
+      );
+
+      lastMouseX = event.clientX;
+      lastMouseY = event.clientY;
+
+      updateCameraPosition();
+    } else {
+      // 既存のマウスムーブメント処理（モデル回転用）
+      const rect = heroSection.getBoundingClientRect();
+      mouseX = ((event.clientX - rect.left) / heroSection.offsetWidth) * 2 - 1;
+      mouseY = -((event.clientY - rect.top) / heroSection.offsetHeight) * 2 + 1;
+
+      targetRotationY = mouseX * 0.5;
+      targetRotationX = mouseY * 0.3;
+    }
+  });
+
+  heroSection.addEventListener("mouseup", function (event) {
+    if (event.button === 1) {
+      // マウスホイールボタン
+      isMouseDown = false;
+      heroSection.style.cursor = "default";
+    }
   });
 
   // マウスリーブイベント
   heroSection.addEventListener("mouseleave", function () {
     targetRotationX = 0;
     targetRotationY = 0;
+    isMouseDown = false;
+    heroSection.style.cursor = "default";
   });
+
+  // コンテキストメニューを無効化（中ボタンクリック時）
+  heroSection.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+  });
+
+  // カメラ位置更新関数
+  function updateCameraPosition() {
+    const x = cameraDistance * Math.sin(cameraAngleY) * Math.cos(cameraAngleX);
+    const y = 2 + cameraDistance * Math.sin(cameraAngleX);
+    const z = cameraDistance * Math.cos(cameraAngleY) * Math.cos(cameraAngleX);
+
+    camera.position.set(x, y, z);
+    camera.lookAt(0, 0, 0);
+  }
 
   // アニメーションループ
   let frameCount = 0;
@@ -401,8 +486,8 @@ function initThreeJS() {
       console.log("Animation frame:", frameCount, "Model exists:", !!model);
     }
 
-    // モデルの自動回転
-    if (model) {
+    // モデルの自動回転（マウス操作がない場合のみ）
+    if (model && !isMouseDown) {
       model.rotation.y += 0.005;
 
       // マウスによる追加回転（スムーズに）
@@ -410,9 +495,9 @@ function initThreeJS() {
       model.rotation.y += (targetRotationY - model.rotation.y) * 0.05;
     }
 
-    // カメラの軽微な動き
-    camera.position.x = Math.sin(Date.now() * 0.0005) * 0.5;
-    camera.position.y = 2 + Math.cos(Date.now() * 0.0003) * 0.2;
+    // カメラの軽微な動きを削除（手動制御を優先）
+    // camera.position.x = Math.sin(Date.now() * 0.0005) * 0.5;
+    // camera.position.y = 2 + Math.cos(Date.now() * 0.0003) * 0.2;
 
     renderer.render(scene, camera);
   }
