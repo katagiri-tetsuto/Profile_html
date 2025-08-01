@@ -499,11 +499,6 @@ function initThreeJS() {
     const controlsGuide = document.getElementById("controls-guide");
     if (controlsGuide) {
       controlsGuide.classList.remove("hidden");
-
-      // 5秒後に自動的に閉じる
-      setTimeout(() => {
-        controlsGuide.classList.add("hidden");
-      }, 5000);
     }
   };
 
