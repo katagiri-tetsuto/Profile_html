@@ -147,9 +147,12 @@ SQL:53
 
 Frameworks
 Flutter:38
+
+Libraries
 pygame:35
 OpenCV:30
 Scikit-learn:30
+mediapipe:17
 
 Cloud Services
 ServiceNow:70
