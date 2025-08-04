@@ -72,6 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
         link.classList.add("active");
       }
     });
+
+    // topセクション以外に移動したときに操作方法ガイドを非表示にする
+    // topセクションに戻ったときは再表示する（ただし操作が有効な場合のみ）
+    const controlsGuide = document.getElementById("controls-guide");
+    if (controlsGuide) {
+      if (currentSection !== "home") {
+        controlsGuide.classList.add("hidden");
+      } else if (currentSection === "home" && isControlsEnabled) {
+        controlsGuide.classList.remove("hidden");
+      }
+    }
   });
 
   // スクロール時のアニメーション
