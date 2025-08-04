@@ -1146,9 +1146,39 @@ section {
 
 .skill-items {
   display: grid;
-  grid-template-columns: repeat(5, 1fr) !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.5rem;
   width: 100%;
+}
+
+/* すべてのスキルカテゴリで統一した5列レイアウトを適用 */
+.skill-category .skill-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* アイテム数が5個未満の場合でも、パネルサイズは5列レイアウトに統一 */
+.skill-category:nth-child(1) .skill-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.skill-category:nth-child(2) .skill-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.skill-category:nth-child(3) .skill-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.skill-category:nth-child(4) .skill-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.skill-category:nth-child(5) .skill-items {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.skill-category:nth-child(6) .skill-items {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .skill-item {
@@ -1719,4 +1749,33 @@ html {
 
 .guide-list strong {
   color: var(--primary-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  /* 小さな画面では全てのskill-itemsを2列レイアウトに変更 */
+  .skill-items,
+  .skill-category:nth-child(1) .skill-items,
+  .skill-category:nth-child(2) .skill-items,
+  .skill-category:nth-child(3) .skill-items,
+  .skill-category:nth-child(4) .skill-items,
+  .skill-category:nth-child(5) .skill-items,
+  .skill-category:nth-child(6) .skill-items {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 非常に小さな画面では1列レイアウトに変更 */
+  .skill-items,
+  .skill-category:nth-child(1) .skill-items,
+  .skill-category:nth-child(2) .skill-items,
+  .skill-category:nth-child(3) .skill-items,
+  .skill-category:nth-child(4) .skill-items,
+  .skill-category:nth-child(5) .skill-items,
+  .skill-category:nth-child(6) .skill-items {
+    grid-template-columns: 1fr !important;
+    max-width: none !important;
+  }
 }
