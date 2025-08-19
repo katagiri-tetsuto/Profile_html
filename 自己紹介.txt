@@ -57,11 +57,11 @@ noteに色々と書いてます。見てね！なずちゃんの名前の由来�
 URL：https://note.com/katagiri_tetsuto
 
 [Belief]
+パーパス
+「Be creative, Be curious, Be spark」
+
 モットー
 変化と学びを積み重ね、好きと面白いに従って行動する
-
-パーパス
-「Be Creative」
 
 ロールモデル
 フリーレン
@@ -69,54 +69,137 @@ URL：https://note.com/katagiri_tetsuto
 URL：
 
 [Works]
-Blenderを用いてThe Backroomsを再現しました。
-…動画
+選抜作品
 
-その他最近の作成
-…動画
+星花.png
+「星空（処女作）」
+blenderで作成した3DCGの処女作です。
+星雲は手書きで表現し、海はセルルック調に作成しました。
+
+Raycasted_Sarus.mp4
+「ホログラム映像の恐竜」
+ジオメトリノードの勉強の一環で作成した3DCGアニメーションです。
+ライティング表現に一番力を入れました。
+恐竜と照明のモデルはアセットを利用しています。
+
+TheBackrooms.mp4
+「The Backroomsシリーズ再現」
+有名インターネットミームのThe Backroomsを3DCGで再現しました。
+スマホ撮影調のアニメーションとし、歩行による手振れや視点の動きを再現しています。
+光のぼやけやカメラの色相ずれ表現など、ライディング表現を工夫しています。
+
+その他の作品
+一部はYouTubeにて公開しています。
+ぜひご覧ください。
+URL:https://youtube.com/@azamiushi
 
 [Career]
-広島大学（2021年4月 ～ 2025年3月）
--情報科学科情報科学部 情報科学科
--ビジュアル情報学研究室
--体育会体操部 主将
--en-courage CS
+広島大学
+-情報科学科情報科学部 情報科学科（2021年4月 ～ 2025年3月）
+
+-ビジュアル情報学研究室（2024年4月 ～ 2025年3月）
+ 研究概要：3Dにおける変形オブジェクトの高速レンダリング
+
+-体育会体操部 主将（2022年11月 ～ 2024年3月）
+ 2023年中四国体操競技大会運営代表
+
+-en-courage CSセクション（2024年3月 ～ 2025年3月）
+ 支部内イベント・支部インフラ担当
+
+ServiceNow
+-アカデミックプログラム（2023年3月 ～ 2025年1月）
+ 学生向け人材育成プログラム
+ 学生エンジニアとして学内システム構築プログラムに関与
+
+Salesforce
+-Pathfinder 第六期生（2024年11月 ～ 2025年5月）
+ Salesforce×Deloitte共同人材育成プログラム
+
+Fujitsu
+-内定者アンバサダー（2024年7月 ～ 2025年3月）
+ WelcomeMeetUp担当
+
+-クラウド＆ビジネスアプリケーション事業本部 ServiceNow部門（2025年4月 ～）
+ 導入研修F24サブリーダー
+ Role別研修CL02リーダー
+ FDBBリーダー
 
 
-ServiceNow（2023年3月 ～ 2025年1月）
--アカデミックプログラム（人材育成プログラム）
-
-Salesforce（2024年11月 ～ 2025年5月）
--Pathfinder 第六期生（人材育成プログラム）
-
-Fujitsu（2025年4月 ～）
--内定者アンバサダー　WelcomeMeetUp担当
--クラウド＆ビジネスアプリケーション事業本部 ServiceNow部門
--導入研修F24サブリーダー、Role別研修CL02リーダー
-
-
-国立研究開発法人情報通信研究機構（2025年5月 ～）
--SecHack365（サイバーセキュリティに関する研究・開発プログラム）
+国立研究開発法人情報通信研究機構
+-SecHack365（2025年5月 ～）
+ サイバーセキュリティに関する研究・開発プログラム
 
 
 [Skills]
+Stacks(0-100のスコア評価)
+
 Languages
-C, C#, Java, Python, Rsut, JavaScript, Dart
+C:45
+C#:15
+Java:55
+Python:60
+Rust:10
+JavaScript:60
+Dart:38
+HTML:45
+CSS:45
+SQL:53
 
 Frameworks
-Flutter, pygame, OpenCV, Scikit-learn
+Flutter:38
+
+Libraries
+pygame:35
+OpenCV:30
+Scikit-learn:30
+mediapipe:17
 
 Cloud Services
-ServiceNow, Salesforce, Google Cloud, Amazon web Service
+ServiceNow:70
+Salesforce:40
+Google Cloud:40
+Amazon web Service:10
 
-Others
-HTML, CSS, SQL
+Tools
+Git/Github:50
+docker:5
+kubernetes:5
 
 3D
-blender
+blender:70
+
+（スコア評価基準）
+10:Beginner
+   - 基本的な構文や概念を理解している
+   - チュートリアルに沿って簡単な実装ができる
+
+30.Basic
+   - 基本的な機能を使って小規模なプロジェクトを作成できる
+   - ドキュメントを参照しながら開発できる
+
+50.Intermediate
+   - 実践的なプロジェクトで活用できる
+   - 問題解決やデバッグが自力でできる
+
+70.Advanced
+   - 複雑なシステム設計・実装ができる
+   - パフォーマンス最適化やベストプラクティスを理解している
+
+90.Expert
+   - 深い専門知識を持ち、他者に指導できる
+   - アーキテクチャ設計や技術選定をリードできる
 
 
-[資格]
-Salesforce　認定アドミニストレーター
-Salesforce　認定AIアソシエイト
-CG-ARTS　CGエンジニア検定エキスパート
+Qualifications
+2022年1月:TOEIC 780点(ETS)
+
+2024年8月：CGエンジニア検定エキスパート(CG-ARTS)
+
+2025年1月：認定アドミニストレーター(Salesforce)
+2025年1月：認定AIアソシエイト(Salesforce)
+
+
+Awards
+2024年9月：ServiceNowHackathon2024 アイデア部門特別賞(ServiceNow)
+2023年10月:2023年体操競技中四国大会　団体3位・個人9位(Gym)
+2022年10月:2022年体操競技中四国大会　団体1位(Gym)
