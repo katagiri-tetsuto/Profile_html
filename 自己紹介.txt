@@ -197,6 +197,7 @@ Qualifications
 
 2025年1月：認定アドミニストレーター(Salesforce)
 2025年1月：認定AIアソシエイト(Salesforce)
+2025年8月：Certified System Administrator(ServiceNow)
 
 
 Awards
